@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="undefined">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#60090">
+    <link rel="shortcut icon" href="/img/coffee.png">
+
+    <title>
+        
+          nodejs的fs模块总结｜落花成殇
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2016/11/03/nodejs的fs模块总结/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://p2.image.hiapk.com/uploads/allimg/121025/23-121025145201.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span class="brand-logo">
+                    落花成殇
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                        
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+                        
+                    
+                        
+                        <li>
+                            <a href="/about/">about</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!--only post-->
+
+    
+        <img class="wechat-title-img" src="http://7xolmp.com1.z0.glb.clouddn.comhttp://p2.image.hiapk.com/uploads/allimg/121025/23-121025145201.jpg">
+    
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://7xolmp.com1.z0.glb.clouddn.comhttp://p2.image.hiapk.com/uploads/allimg/121025/23-121025145201.jpgundefined')
+    }
+
+</style>
+
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>nodejs的fs模块总结</h1>
+                    
+                    <span class="meta">
+                         作者 dadaa
+                         <span>
+                          日期 2016-11-03
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#node" title="node">node</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            nodejs的fs模块总结
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+
+                <h1 id="fs"><a href="#fs" class="headerlink" title="fs"></a>fs</h1><h2 id="Node-js的文件系统的Api"><a href="#Node-js的文件系统的Api" class="headerlink" title="Node.js的文件系统的Api"></a>Node.js的文件系统的Api</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//公共引用</span></div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div></pre></td></tr></table></figure>
+<h3 id="1、读取文件File函数"><a href="#1、读取文件File函数" class="headerlink" title="1、读取文件File函数"></a>1、读取文件File函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//<span class="built_in">read</span>File(filename,[options],callback);</div><div class="line"></div><div class="line">/**</div><div class="line"> * filename, 必选参数，文件名</div><div class="line"> * [options],可选参数，可指定flag（文件操作选项，如r+ 读写；w+ 读写，文件不存在则创建）及encoding属性</div><div class="line"> * callback 读取文件后的回调函数，参数默认第一个err,第二个data 数据</div><div class="line"> */</div><div class="line"></div><div class="line">fs.readFile(__dirname + <span class="string">'/test.txt'</span>, &#123;flag: <span class="string">'r+'</span>, encoding: <span class="string">'utf8'</span>&#125;, <span class="keyword">function</span> (err, data) &#123;</div><div class="line">    <span class="keyword">if</span>(err) &#123;</div><div class="line">     console.error(err);</div><div class="line">     <span class="built_in">return</span>;</div><div class="line">    &#125;</div><div class="line">    console.log(data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="2、写文件"><a href="#2、写文件" class="headerlink" title="2、写文件"></a>2、写文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// fs.writeFile(filename,data,[options],callback);</div><div class="line">var w_data = <span class="string">'这是一段通过fs.writeFile函数写入的内容；\r\n'</span>;</div><div class="line">var w_data = new Buffer(w_data);</div><div class="line"></div><div class="line">/**</div><div class="line"> * filename, 必选参数，文件名</div><div class="line"> * data, 写入的数据，可以字符或一个Buffer对象</div><div class="line"> * [options],flag,mode(权限),encoding</div><div class="line"> * callback 读取文件后的回调函数，参数默认第一个err,第二个data 数据</div><div class="line"> */</div><div class="line"></div><div class="line">fs.writeFile(__dirname + <span class="string">'/test.txt'</span>, w_data, &#123;flag: <span class="string">'a'</span>&#125;, <span class="keyword">function</span> (err) &#123;</div><div class="line">   <span class="keyword">if</span>(err) &#123;</div><div class="line">    console.error(err);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">       console.log(<span class="string">'写入成功'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="3、以追加方式写文件"><a href="#3、以追加方式写文件" class="headerlink" title="3、以追加方式写文件"></a>3、以追加方式写文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// fs.appendFile(filename,data,[options],callback);</div><div class="line"></div><div class="line">fs.appendFile(__dirname + <span class="string">'/test.txt'</span>, <span class="string">'使用fs.appendFile追加文件内容'</span>, <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  console.log(<span class="string">'追加内容完成'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="4、打开文件"><a href="#4、打开文件" class="headerlink" title="4、打开文件"></a>4、打开文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// fs.open(filename, flags, [mode], callback);</div><div class="line"></div><div class="line">/**</div><div class="line"> * filename, 必选参数，文件名</div><div class="line"> * flags, 操作标识，如<span class="string">"r"</span>,读方式打开</div><div class="line"> * [mode],权限，如777，表示任何用户读写可执行</div><div class="line"> * callback 打开文件后回调函数，参数默认第一个err,第二个fd为一个整数，表示打开文件返回的文件描述符，window中又称文件句柄</div><div class="line"> */</div><div class="line"></div><div class="line">fs.open(__dirname + <span class="string">'/test.txt'</span>, <span class="string">'r'</span>, <span class="string">'0666'</span>, <span class="keyword">function</span> (err, fd) &#123;</div><div class="line">  console.log(fd);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="5、读文件，读取打开的文件内容到缓冲区中；"><a href="#5、读文件，读取打开的文件内容到缓冲区中；" class="headerlink" title="5、读文件，读取打开的文件内容到缓冲区中；"></a>5、读文件，读取打开的文件内容到缓冲区中；</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">//fs.read(fd, buffer, offset, length, position, callback);</div><div class="line">/**</div><div class="line"> * fd, 使用fs.open打开成功后返回的文件描述符</div><div class="line"> * buffer, 一个Buffer对象，v8引擎分配的一段内存</div><div class="line"> * offset, 整数，向缓存区中写入时的初始位置，以字节为单位</div><div class="line"> * length, 整数，读取文件的长度</div><div class="line"> * position, 整数，读取文件初始位置；文件大小以字节为单位</div><div class="line"> * callback(err, bytesRead, buffer), 读取执行完成后回调函数，bytesRead实际读取字节数，被读取的缓存区对象</div><div class="line"> */</div><div class="line"></div><div class="line">fs.open(__dirname + <span class="string">'/test.txt'</span>, <span class="string">'r'</span>, <span class="keyword">function</span> (err, fd) &#123;</div><div class="line">  <span class="keyword">if</span>(err) &#123;</div><div class="line">    console.error(err);</div><div class="line">    <span class="built_in">return</span>;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    var buffer = new Buffer(255);</div><div class="line">    console.log(buffer.length);</div><div class="line">    //每一个汉字utf8编码是3个字节，英文是1个字节</div><div class="line">    fs.read(fd, buffer, 0, 9, 3, <span class="keyword">function</span> (err, bytesRead, buffer) &#123;</div><div class="line">      <span class="keyword">if</span>(err) &#123;</div><div class="line">        throw err;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        console.log(bytesRead);</div><div class="line">        console.log(buffer.slice(0, bytesRead).toString());</div><div class="line">        //读取完后，再使用fd读取时，基点是基于上次读取位置计算；</div><div class="line">        fs.read(fd, buffer, 0, 9, null, <span class="keyword">function</span> (err, bytesRead, buffer) &#123;</div><div class="line">          console.log(bytesRead);</div><div class="line">          console.log(buffer.slice(0, bytesRead).toString());</div><div class="line">        &#125;);</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>###6、写文件，将缓冲区内数据写入使用fs.open打开的文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">//fs.write(fd, buffer, offset, length, position, callback);</div><div class="line"></div><div class="line">/**</div><div class="line"> * fd, 使用fs.open打开成功后返回的文件描述符</div><div class="line"> * buffer, 一个Buffer对象，v8引擎分配的一段内存</div><div class="line"> * offset, 整数，从缓存区中读取时的初始位置，以字节为单位</div><div class="line"> * length, 整数，从缓存区中读取数据的字节数</div><div class="line"> * position, 整数，写入文件初始位置；</div><div class="line"> * callback(err, written, buffer), 写入操作执行完成后回调函数，written实际写入字节数，buffer被读取的缓存区对象</div><div class="line"> */</div><div class="line"></div><div class="line">fs.open(__dirname + <span class="string">'/test.txt'</span>, <span class="string">'a'</span>, <span class="keyword">function</span> (err, fd) &#123;</div><div class="line">  <span class="keyword">if</span>(err) &#123;</div><div class="line">    console.error(err);</div><div class="line">    <span class="built_in">return</span>;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    var buffer = new Buffer(<span class="string">'写入文件数据内容'</span>);</div><div class="line">    //写入<span class="string">'入文件'</span>三个字</div><div class="line">    fs.write(fd, buffer, 3, 9, 12, <span class="keyword">function</span> (err, written, buffer) &#123;</div><div class="line">      <span class="keyword">if</span>(err) &#123;</div><div class="line">        console.log(<span class="string">'写入文件失败'</span>);</div><div class="line">        console.error(err);</div><div class="line">        <span class="built_in">return</span>;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        console.log(buffer.toString());</div><div class="line">        //写入<span class="string">'数据内'</span>三个字</div><div class="line">        fs.write(fd, buffer, 12, 9, null, <span class="keyword">function</span> (err, written, buffer) &#123;</div><div class="line">          console.log(buffer.toString());</div><div class="line">        &#125;)</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="7、刷新缓存区"><a href="#7、刷新缓存区" class="headerlink" title="7、刷新缓存区;"></a>7、刷新缓存区;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">// 使用fs.write写入文件时，操作系统是将数据读到内存，再把数据写入到文件中，当数据读完时并不代表数据已经写完，因为有一部分还可能在内在缓冲区内。</div><div class="line">// 因此可以使用fs.fsync方法将内存中数据写入文件；--刷新内存缓冲区；</div><div class="line"></div><div class="line">//fs.fsync(fd, [callback])</div><div class="line">/**</div><div class="line"> * fd, 使用fs.open打开成功后返回的文件描述符</div><div class="line"> * [callback(err, written, buffer)], 写入操作执行完成后回调函数，written实际写入字节数，buffer被读取的缓存区对象</div><div class="line"> */</div><div class="line"></div><div class="line">fs.open(__dirname + <span class="string">'/test.txt'</span>, <span class="string">'a'</span>, <span class="keyword">function</span> (err, fd) &#123;</div><div class="line">  <span class="keyword">if</span>(err)</div><div class="line">    throw err;</div><div class="line">  var buffer = new Buffer(<span class="string">'我爱nodejs编程'</span>);</div><div class="line">  fs.write(fd, buffer, 0, 9, 0, <span class="keyword">function</span> (err, written, buffer) &#123;</div><div class="line">    console.log(written.toString());</div><div class="line">    fs.write(fd, buffer, 9, buffer.length - 9, null, <span class="keyword">function</span> (err, written) &#123;</div><div class="line">      console.log(written.toString());</div><div class="line">      fs.fsync(fd);</div><div class="line">      fs.close(fd);</div><div class="line">    &#125;)</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="8、创建目录"><a href="#8、创建目录" class="headerlink" title="8、创建目录;"></a>8、创建目录;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//使用fs.mkdir创建目录</div><div class="line">//fs.mkdir(path, [mode], callback);</div><div class="line"></div><div class="line">/**</div><div class="line"> * path, 被创建目录的完整路径及目录名；</div><div class="line"> * [mode], 目录权限，默认0777</div><div class="line"> * [callback(err)], 创建完目录回调函数,err错误对象</div><div class="line"> */</div><div class="line"></div><div class="line">fs.mkdir(__dirname + <span class="string">'/fsDir'</span>, <span class="keyword">function</span> (err) &#123;</div><div class="line">  <span class="keyword">if</span>(err)</div><div class="line">    throw err;</div><div class="line">  console.log(<span class="string">'创建目录成功'</span>)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="9、读取目录"><a href="#9、读取目录" class="headerlink" title="9、读取目录;"></a>9、读取目录;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">//使用fs.readdir读取目录，重点其回调函数中files对象</div><div class="line">//fs.readdir(path, callback);</div><div class="line"></div><div class="line">/**</div><div class="line"> * path, 要读取目录的完整路径及目录名；</div><div class="line"> * [callback(err, files)], 读完目录回调函数；err错误对象，files数组，存放读取到的目录中的所有文件名</div><div class="line"> */</div><div class="line"></div><div class="line">fs.readdir(__dirname + <span class="string">'/fsDir/'</span>, <span class="keyword">function</span> (err, files) &#123;</div><div class="line">  <span class="keyword">if</span>(err) &#123;</div><div class="line">    console.error(err);</div><div class="line">    <span class="built_in">return</span>;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    files.forEach(<span class="keyword">function</span> (file) &#123;</div><div class="line">      var filePath = path.normalize(__dirname + <span class="string">'/fsDir/'</span> + file);</div><div class="line">      fs.stat(filePath, <span class="keyword">function</span> (err, <span class="built_in">stat</span>) &#123;</div><div class="line">        <span class="keyword">if</span>(stat.isFile()) &#123;</div><div class="line">          console.log(filePath + <span class="string">' is: '</span> + <span class="string">'file'</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(stat.isDirectory()) &#123;</div><div class="line">          console.log(filePath + <span class="string">' is: '</span> + <span class="string">'dir'</span>);</div><div class="line">        &#125;</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">for</span> (var i = 0; i &lt; files.length; i++) &#123;</div><div class="line">      //使用闭包无法保证读取文件的顺序与数组中保存的致</div><div class="line">      (<span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">        var filePath = path.normalize(__dirname + <span class="string">'/fsDir/'</span> + files[i]);</div><div class="line">        fs.stat(filePath, <span class="keyword">function</span> (err, <span class="built_in">stat</span>) &#123;</div><div class="line">          <span class="keyword">if</span>(stat.isFile()) &#123;</div><div class="line">            console.log(filePath + <span class="string">' is: '</span> + <span class="string">'file'</span>);</div><div class="line">          &#125;</div><div class="line">          <span class="keyword">if</span>(stat.isDirectory()) &#123;</div><div class="line">            console.log(filePath + <span class="string">' is: '</span> + <span class="string">'dir'</span>);</div><div class="line">          &#125;</div><div class="line">        &#125;);</div><div class="line">      &#125;)();</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="10、查看文件与目录的信息"><a href="#10、查看文件与目录的信息" class="headerlink" title="10、查看文件与目录的信息;"></a>10、查看文件与目录的信息;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//fs.stat(path, callback);</div><div class="line">//fs.lstat(path, callback); //查看符号链接文件</div><div class="line">/**</div><div class="line"> * path, 要查看目录/文件的完整路径及名；</div><div class="line"> * [callback(err, stats)], 操作完成回调函数；err错误对象，<span class="built_in">stat</span> fs.Stat一个对象实例，提供如:isFile, isDirectory,isBlockDevice等方法及size,ctime,mtime等属性</div><div class="line"> */</div><div class="line"></div><div class="line">//实例，查看fs.readdir</div></pre></td></tr></table></figure>
+<h3 id="11、查看文件与目录的是否存在"><a href="#11、查看文件与目录的是否存在" class="headerlink" title="11、查看文件与目录的是否存在"></a>11、查看文件与目录的是否存在</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//fs.exists(path, callback);</div><div class="line"></div><div class="line">/**</div><div class="line"> * path, 要查看目录/文件的完整路径及名；</div><div class="line"> * [callback(exists)], 操作完成回调函数；exists <span class="literal">true</span>存在，<span class="literal">false</span>表示不存在</div><div class="line"> */</div><div class="line"></div><div class="line">fs.exists(__dirname + <span class="string">'/te'</span>, <span class="keyword">function</span> (exists) &#123;</div><div class="line">  var retTxt = exists ? retTxt = <span class="string">'文件存在'</span> : <span class="string">'文件不存在'</span>;</div><div class="line">  console.log(retTxt);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="12、修改文件访问时间与修改时间"><a href="#12、修改文件访问时间与修改时间" class="headerlink" title="12、修改文件访问时间与修改时间"></a>12、修改文件访问时间与修改时间</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//fs.utimes(path, atime, mtime, callback);</div><div class="line"></div><div class="line">/**</div><div class="line"> * path, 要查看目录/文件的完整路径及名；</div><div class="line"> * atime, 新的访问时间</div><div class="line"> * ctime, 新的修改时间</div><div class="line"> * [callback(err)], 操作完成回调函数；err操作失败对象</div><div class="line"> */</div><div class="line"></div><div class="line">fs.utimes(__dirname + <span class="string">'/test.txt'</span>, new Date(), new Date(), <span class="keyword">function</span> (err) &#123;</div><div class="line">  <span class="keyword">if</span>(err) &#123;</div><div class="line">    console.error(err);</div><div class="line">    <span class="built_in">return</span>;</div><div class="line">  &#125;</div><div class="line">  fs.stat(__dirname + <span class="string">'/test.txt'</span>, <span class="keyword">function</span> (err, <span class="built_in">stat</span>) &#123;</div><div class="line">    console.log(<span class="string">'访问时间: '</span> + stat.atime.toString() + <span class="string">'; \n修改时间：'</span> + stat.mtime);</div><div class="line">    console.log(stat.mode);</div><div class="line">  &#125;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="13、修改文件或目录的操作权限"><a href="#13、修改文件或目录的操作权限" class="headerlink" title="13、修改文件或目录的操作权限"></a>13、修改文件或目录的操作权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//fs.utimes(path, mode, callback);</div><div class="line"></div><div class="line">/**</div><div class="line"> * path, 要查看目录/文件的完整路径及名；</div><div class="line"> * mode, 指定权限，如：0666 8进制，权限：所有用户可读、写，</div><div class="line"> * [callback(err)], 操作完成回调函数；err操作失败对象</div><div class="line"> */</div><div class="line"></div><div class="line">fs.chmod(__dirname + <span class="string">'/fsDir'</span>, 0666, <span class="keyword">function</span> (err) &#123;</div><div class="line">  <span class="keyword">if</span>(err) &#123;</div><div class="line">    console.error(err);</div><div class="line">    <span class="built_in">return</span>;</div><div class="line">  &#125;</div><div class="line">  console.log(<span class="string">'修改权限成功'</span>)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="14、移动-重命名文件或目录"><a href="#14、移动-重命名文件或目录" class="headerlink" title="14、移动/重命名文件或目录"></a>14、移动/重命名文件或目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//fs.rename(oldPath, newPath, callback);</div><div class="line"></div><div class="line">/**</div><div class="line"> * oldPath, 原目录/文件的完整路径及名；</div><div class="line"> * newPath, 新目录/文件的完整路径及名；如果新路径与原路径相同，而只文件名不同，则是重命名</div><div class="line"> * [callback(err)], 操作完成回调函数；err操作失败对象</div><div class="line"> */</div><div class="line">fs.rename(__dirname + <span class="string">'/test'</span>, __dirname + <span class="string">'/fsDir'</span>, <span class="keyword">function</span> (err) &#123;</div><div class="line">  <span class="keyword">if</span>(err) &#123;</div><div class="line">    console.error(err);</div><div class="line">    <span class="built_in">return</span>;</div><div class="line">  &#125;</div><div class="line">  console.log(<span class="string">'重命名成功'</span>)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="15、删除空目录"><a href="#15、删除空目录" class="headerlink" title="15、删除空目录"></a>15、删除空目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">//fs.rmdir(path, callback);</div><div class="line"></div><div class="line">/**</div><div class="line"> * path, 目录的完整路径及目录名；</div><div class="line"> * [callback(err)], 操作完成回调函数；err操作失败对象</div><div class="line"> */</div><div class="line"></div><div class="line">fs.rmdir(__dirname + <span class="string">'/test'</span>, <span class="keyword">function</span> (err) &#123;</div><div class="line">  fs.mkdir(__dirname + <span class="string">'/test'</span>, 0666, <span class="keyword">function</span> (err) &#123;</div><div class="line">    console.log(<span class="string">'创建test目录'</span>);</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">if</span>(err) &#123;</div><div class="line">    console.log(<span class="string">'删除空目录失败，可能原因：1、目录不存在，2、目录不为空'</span>)</div><div class="line">    console.error(err);</div><div class="line">    <span class="built_in">return</span>;</div><div class="line">  &#125;</div><div class="line">  console.log(<span class="string">'删除空目录成功!'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="16、监视文件"><a href="#16、监视文件" class="headerlink" title="16、监视文件"></a>16、监视文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">//对文件进行监视，并且在监视到文件被修改时执行处理</div><div class="line">//fs.watchFile(filename, [options], listener);</div><div class="line"></div><div class="line">/**</div><div class="line"> * filename, 完整路径及文件名；</div><div class="line"> * [options], persistent <span class="literal">true</span>表示持续监视，不退出程序；interval 单位毫秒，表示每隔多少毫秒监视一次文件</div><div class="line"> * listener, 文件发生变化时回调，有两个参数：curr为一个fs.Stat对象，被修改后文件，prev,一个fs.Stat对象，表示修改前对象</div><div class="line"> */</div><div class="line"></div><div class="line">fs.watchFile(__dirname + <span class="string">'/test.txt'</span>, &#123;interval: 20&#125;, <span class="keyword">function</span> (curr, prev) &#123;</div><div class="line">  <span class="keyword">if</span>(Date.parse(prev.ctime) == 0) &#123;</div><div class="line">    console.log(<span class="string">'文件被创建!'</span>);</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(Date.parse(curr.ctime) == 0) &#123;</div><div class="line">    console.log(<span class="string">'文件被删除!'</span>)</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(Date.parse(curr.mtime) != Date.parse(prev.mtime)) &#123;</div><div class="line">    console.log(<span class="string">'文件有修改'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line">fs.watchFile(__dirname + <span class="string">'/test.txt'</span>, <span class="keyword">function</span> (curr, prev) &#123;</div><div class="line">  console.log(<span class="string">'这是第二个watch,监视到文件有修改'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="17、取消监视文件"><a href="#17、取消监视文件" class="headerlink" title="17、取消监视文件"></a>17、取消监视文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//取消对文件进行监视</div><div class="line">//fs.unwatchFile(filename, [listener]);</div><div class="line"></div><div class="line">/**</div><div class="line"> * filename, 完整路径及文件名；</div><div class="line"> * [listener], 要取消的监听器事件，如果不指定，则取消所有监听处理事件</div><div class="line"> */</div><div class="line"></div><div class="line">var listener = <span class="keyword">function</span> (curr, prev) &#123;</div><div class="line">  console.log(<span class="string">'我是监视函数'</span>)</div><div class="line">&#125;</div><div class="line">fs.unwatchFile(__dirname + <span class="string">'/test.txt'</span>, listener);</div></pre></td></tr></table></figure>
+<h3 id="18、监视文件或目录"><a href="#18、监视文件或目录" class="headerlink" title="18、监视文件或目录"></a>18、监视文件或目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">// 对文件或目录进行监视，并且在监视到修改时执行处理；</div><div class="line">// fs.watch返回一个fs.FSWatcher对象，拥有一个close方法，用于停止watch操作；</div><div class="line">// 当fs.watch有文件变化时，会触发fs.FSWatcher对象的change(err, filename)事件，err错误对象，filename发生变化的文件名</div><div class="line">// fs.watch(filename, [options], [listener]);</div><div class="line"></div><div class="line">/**</div><div class="line"> * filename, 完整路径及文件名或目录名；</div><div class="line"> * [listener(event, filename], 监听器事件，有两个参数：event 为rename表示指定的文件或目录中有重命名、删除或移动操作或change表示有修改，filename表示发生变化的文件路径</div><div class="line"> */</div><div class="line"></div><div class="line">var fsWatcher = fs.watch(__dirname + <span class="string">'/test'</span>, <span class="keyword">function</span> (event, filename) &#123;</div><div class="line">  //console.log(event)</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//console.log(fsWatcher instanceof FSWatcher);</div><div class="line"></div><div class="line">fsWatcher.on(<span class="string">'change'</span>, <span class="keyword">function</span> (event, filename) &#123;</div><div class="line">  console.log(filename + <span class="string">' 发生变化'</span>)</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//30秒后关闭监视</div><div class="line"><span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  console.log(<span class="string">'关闭'</span>)</div><div class="line">  fsWatcher.close(<span class="keyword">function</span> (err) &#123;</div><div class="line">    <span class="keyword">if</span>(err) &#123;</div><div class="line">      console.error(err)</div><div class="line">    &#125;</div><div class="line">    console.log(<span class="string">'关闭watch'</span>)</div><div class="line">  &#125;);</div><div class="line">&#125;, 30000);</div></pre></td></tr></table></figure>
+<h3 id="19、文件流"><a href="#19、文件流" class="headerlink" title="19、文件流"></a>19、文件流</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 流，在应用程序中表示一组有序的、有起点有终点的字节数据的传输手段；</div><div class="line"> * Node.js中实现了stream.Readable/stream.Writeable接口的对象进行流数据读写；以上接口都继承自EventEmitter类，因此在读/写流不同状态时，触发不同事件；</div><div class="line"> * 关于流读取：Node.js不断将文件一小块内容读入缓冲区，再从缓冲区中读取内容；</div><div class="line"> * 关于流写入：Node.js不断将流数据写入内在缓冲区，待缓冲区满后再将缓冲区写入到文件中；重复上面操作直到要写入内容写写完；</div><div class="line"> * <span class="built_in">read</span>File、<span class="built_in">read</span>、writeFile、write都是将整个文件放入内存而再操作，而则是文件一部分数据一部分数据操作；</div><div class="line"> *</div><div class="line"> * -----------------------流读取-------------------------------------</div><div class="line"> * 读取数据对象：</div><div class="line"> * fs.ReadStream 读取文件</div><div class="line"> * http.IncomingMessage 客户端请求或服务器端响应</div><div class="line"> * net.Socket    Socket端口对象</div><div class="line"> * child.stdout  子进程标准输出</div><div class="line"> * child.stdin   子进程标准入</div><div class="line"> * process.stdin 用于创建进程标准输入流</div><div class="line"> * Gzip、Deflate、DeflateRaw   数据压缩</div><div class="line"> *</div><div class="line"> * 触发事件：</div><div class="line"> * readable  数据可读时</div><div class="line"> * data      数据读取后</div><div class="line"> * end       数据读取完成时</div><div class="line"> * error     数据读取错误时</div><div class="line"> * close     关闭流对象时</div><div class="line"> *</div><div class="line"> * 读取数据的对象操作方法：</div><div class="line"> * <span class="built_in">read</span>      读取数据方法</div><div class="line"> * <span class="built_in">set</span>Encoding   设置读取数据的编</div><div class="line"> * pause     通知对象众目停止触发data事件</div><div class="line"> * resume    通知对象恢复触发data事件</div><div class="line"> * pipe      设置数据通道，将读入流数据接入写入流；</div><div class="line"> * unpipe    取消通道</div><div class="line"> * unshift   当流数据绑定一个解析器时，此方法取消解析器</div><div class="line"> *</div><div class="line"> * ------------------------流写入-------------------------------------</div><div class="line"> * 写数据对象：</div><div class="line"> * fs.WriteStream           写入文件对象</div><div class="line"> * http.clientRequest       写入HTTP客户端请求数据</div><div class="line"> * http.ServerResponse      写入HTTP服务器端响应数据</div><div class="line"> * net.Socket               读写TCP流或UNIX流，需要connection事件传递给用户</div><div class="line"> * child.stdout             子进程标准输出</div><div class="line"> * child.stdin              子进程标准入</div><div class="line"> * Gzip、Deflate、DeflateRaw  数据压缩</div><div class="line"> *</div><div class="line"> * 写入数据触发事件：</div><div class="line"> * drain            当write方法返回<span class="literal">false</span>时，表示缓存区中已经输出到目标对象中，可以继续写入数据到缓存区</div><div class="line"> * finish           当end方法调用，全部数据写入完成</div><div class="line"> * pipe             当用于读取数据的对象的pipe方法被调用时</div><div class="line"> * unpipe           当unpipe方法被调用</div><div class="line"> * error            当发生错误</div><div class="line"> *</div><div class="line"> * 写入数据方法：</div><div class="line"> * write            用于写入数据</div><div class="line"> * end              结束写入，之后再写入会报错；</div><div class="line"> */</div></pre></td></tr></table></figure>
+<h3 id="20、创建读取流"><a href="#20、创建读取流" class="headerlink" title="20、创建读取流"></a>20、创建读取流</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">//fs.createReadStream(path, [options])</div><div class="line">/**</div><div class="line"> * path 文件路径</div><div class="line"> * [options] flags:指定文件操作，默认<span class="string">'r'</span>,读操作；encoding,指定读取流编码；autoClose, 是否读取完成后自动关闭，默认<span class="literal">true</span>；start指定文件开始读取位置；end指定文件开始读结束位置</div><div class="line"> */</div><div class="line"></div><div class="line">var rs = fs.createReadStream(__dirname + <span class="string">'/test.txt'</span>, &#123;start: 0, end: 2&#125;);</div><div class="line">  //open是ReadStream对象中表示文件打开时事件，</div><div class="line">rs.on(<span class="string">'open'</span>, <span class="keyword">function</span> (fd) &#123;</div><div class="line">  console.log(<span class="string">'开始读取文件'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">rs.on(<span class="string">'data'</span>, <span class="keyword">function</span> (data) &#123;</div><div class="line">  console.log(data.toString());</div><div class="line">&#125;);</div><div class="line"></div><div class="line">rs.on(<span class="string">'end'</span>, <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  console.log(<span class="string">'读取文件结束'</span>)</div><div class="line">&#125;);</div><div class="line">rs.on(<span class="string">'close'</span>, <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  console.log(<span class="string">'文件关闭'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">rs.on(<span class="string">'error'</span>, <span class="keyword">function</span> (err) &#123;</div><div class="line">  console.error(err);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//暂停和回复文件读取；</div><div class="line">rs.on(<span class="string">'open'</span>, <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  console.log(<span class="string">'开始读取文件'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">rs.pause();</div><div class="line"></div><div class="line">rs.on(<span class="string">'data'</span>, <span class="keyword">function</span> (data) &#123;</div><div class="line">  console.log(data.toString());</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  rs.resume();</div><div class="line">&#125;, 2000);</div></pre></td></tr></table></figure>
+<h3 id="21、创建写入流"><a href="#21、创建写入流" class="headerlink" title="21、创建写入流"></a>21、创建写入流</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">//fs.createWriteStream(path, [options])</div><div class="line">/**</div><div class="line"> * path 文件路径</div><div class="line"> * [options] flags:指定文件操作，默认<span class="string">'w'</span>,；encoding,指定读取流编码；start指定写入文件的位置</div><div class="line"> */</div><div class="line"></div><div class="line">/* ws.write(chunk, [encoding], [callback]);</div><div class="line"> * chunk,  可以为Buffer对象或一个字符串，要写入的数据</div><div class="line"> * [encoding],  编码</div><div class="line"> * [callback],  写入后回调</div><div class="line"> */</div><div class="line"></div><div class="line">/* ws.end([chunk], [encoding], [callback]);</div><div class="line"> * [chunk],  要写入的数据</div><div class="line"> * [encoding],  编码</div><div class="line"> * [callback],  写入后回调</div><div class="line"> */</div><div class="line"></div><div class="line">var ws = fs.createWriteStream(__dirname + <span class="string">'/test.txt'</span>, &#123;start: 0&#125;);</div><div class="line">var buffer = new Buffer(<span class="string">'我也喜欢你'</span>);</div><div class="line">ws.write(buffer, <span class="string">'utf8'</span>, <span class="keyword">function</span> (err, buffer) &#123;</div><div class="line">  console.log(arguments);</div><div class="line">  console.log(<span class="string">'写入完成，回调函数没有参数'</span>)</div><div class="line">&#125;);</div><div class="line">//最后再写入的内容</div><div class="line">ws.end(<span class="string">'再见'</span>);</div><div class="line">//使用流完成复制文件操作</div><div class="line">var rs = fs.createReadStream(__dirname + <span class="string">'/test.txt'</span>)</div><div class="line">var ws = fs.createWriteStream(__dirname + <span class="string">'/test/test.txt'</span>);</div><div class="line"></div><div class="line">rs.on(<span class="string">'data'</span>, <span class="keyword">function</span> (data) &#123;</div><div class="line">  ws.write(data)</div><div class="line">&#125;);</div><div class="line"></div><div class="line">ws.on(<span class="string">'open'</span>, <span class="keyword">function</span> (fd) &#123;</div><div class="line">  console.log(<span class="string">'要写入的数据文件已经打开，文件描述符是： '</span> + fd);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">rs.on(<span class="string">'end'</span>, <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  console.log(<span class="string">'文件读取完成'</span>);</div><div class="line">  ws.end(<span class="string">'完成'</span>, <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    console.log(<span class="string">'文件全部写入完成'</span>)</div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line">//关于WriteStream对象的write方法返回一个布尔类型，当缓存区中数据全部写满时，返回<span class="literal">false</span>;</div><div class="line">//表示缓存区写满，并将立即输出到目标对象中</div><div class="line"></div><div class="line">//第一个例子</div><div class="line">var ws = fs.createWriteStream(__dirname + <span class="string">'/test/test.txt'</span>);</div><div class="line"><span class="keyword">for</span> (var i = 0; i &lt; 10000; i++) &#123;</div><div class="line">  var w_flag = ws.write(i.toString());</div><div class="line">  //当缓存区写满时，输出<span class="literal">false</span></div><div class="line">  console.log(w_flag);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">//第二个例子</div><div class="line">var ws = fs.createWriteStream(__dirname + <span class="string">'/test/untiyou.mp3'</span>);</div><div class="line">var rs = fs.createReadStream(__dirname + <span class="string">'/test/Until You.mp3'</span>);</div><div class="line">rs.on(<span class="string">'data'</span>, <span class="keyword">function</span> (data) &#123;</div><div class="line">  var flag = ws.write(data);</div><div class="line">  console.log(flag);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//系统缓存区数据已经全部输出触发drain事件</div><div class="line">ws.on(<span class="string">'drain'</span>, <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  console.log(<span class="string">'系统缓存区数据已经全部输出。'</span>)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="22、管道pipe实现流读写"><a href="#22、管道pipe实现流读写" class="headerlink" title="22、管道pipe实现流读写"></a>22、管道pipe实现流读写</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//rs.pipe(destination, [options]);</div><div class="line">/**</div><div class="line"> * destination 必须一个可写入流数据对象</div><div class="line"> * [opations] end 默认为<span class="literal">true</span>，表示读取完成立即关闭文件；</div><div class="line"> */</div><div class="line"></div><div class="line">var rs = fs.createReadStream(__dirname + <span class="string">'/test/Until You.mp3'</span>);</div><div class="line">var ws = fs.createWriteStream(__dirname + <span class="string">'/test/untiyou.mp3'</span>);</div><div class="line">rs.pipe(ws);</div><div class="line">rs.on(<span class="string">'data'</span>, <span class="keyword">function</span> (data) &#123;</div><div class="line">  console.log(<span class="string">'数据可读'</span>)</div><div class="line">&#125;);</div><div class="line">rs.on(<span class="string">'end'</span>, <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  console.log(<span class="string">'文件读取完成'</span>);</div><div class="line">  //ws.end(<span class="string">'再见'</span>)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/11/13/window—-Api总结/" data-toggle="tooltip" data-placement="top" title="window—-Api总结">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/10/18/string的拓展/" data-toggle="tooltip" data-placement="top" title="string的拓展">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="2016/11/03/nodejs的fs模块总结/"
+                        data-title="nodejs的fs模块总结"
+                        data-url="http://yoursite.com/2016/11/03/nodejs的fs模块总结/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col" >
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#fs"><span class="toc-text">fs</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js的文件系统的Api"><span class="toc-text">Node.js的文件系统的Api</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、读取文件File函数"><span class="toc-text">1、读取文件File函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、写文件"><span class="toc-text">2、写文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、以追加方式写文件"><span class="toc-text">3、以追加方式写文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、打开文件"><span class="toc-text">4、打开文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、读文件，读取打开的文件内容到缓冲区中；"><span class="toc-text">5、读文件，读取打开的文件内容到缓冲区中；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、刷新缓存区"><span class="toc-text">7、刷新缓存区;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、创建目录"><span class="toc-text">8、创建目录;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9、读取目录"><span class="toc-text">9、读取目录;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10、查看文件与目录的信息"><span class="toc-text">10、查看文件与目录的信息;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11、查看文件与目录的是否存在"><span class="toc-text">11、查看文件与目录的是否存在</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12、修改文件访问时间与修改时间"><span class="toc-text">12、修改文件访问时间与修改时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13、修改文件或目录的操作权限"><span class="toc-text">13、修改文件或目录的操作权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14、移动-重命名文件或目录"><span class="toc-text">14、移动/重命名文件或目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15、删除空目录"><span class="toc-text">15、删除空目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16、监视文件"><span class="toc-text">16、监视文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17、取消监视文件"><span class="toc-text">17、取消监视文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18、监视文件或目录"><span class="toc-text">18、监视文件或目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19、文件流"><span class="toc-text">19、文件流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20、创建读取流"><span class="toc-text">20、创建读取流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21、创建写入流"><span class="toc-text">21、创建写入流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22、管道pipe实现流读写"><span class="toc-text">22、管道pipe实现流读写</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'dashan123';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <span class="text-muted"style="font-size: 14px">双击导航条返回顶部</span>
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/daa-da">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/5263776212/profile?topnav=1&amp;wvr=6&amp;is_all=1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/dadaa1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 落花成殇 2016
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','undefined','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <!--wechat title img-->
+    <img class="wechat-title-img" src="http://i1.buimg.com/567571/ab86b19deb1eeb47.jpg">
+</body>
+
+</html>

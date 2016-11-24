@@ -1,0 +1,12 @@
+---
+layout: post
+title: "Hola 2016"
+subtitle: "hi, I'm haojen ma"
+date: 2016-05-26 06:00
+author: "Haojen Ma"
+header-img: "img/post-default.jpg"
+cdn: 'header-on'
+tags:
+    - Movies
+    - Life
+---

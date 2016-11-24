@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="undefined">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#60090">
+    <link rel="shortcut icon" href="/img/coffee.png">
+
+    <title>
+        
+          纯css制作各种图形｜落花成殇
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2016/10/07/纯css制作各种图形/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://p2.image.hiapk.com/uploads/allimg/121025/23-121025145201.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span class="brand-logo">
+                    落花成殇
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                        
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+                        
+                    
+                        
+                        <li>
+                            <a href="/about/">about</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!--only post-->
+
+    
+        <img class="wechat-title-img" src="http://p2.image.hiapk.com/uploads/allimg/121025/23-121025145201.jpg">
+    
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://p2.image.hiapk.com/uploads/allimg/121025/23-121025145201.jpg') ;
+    }
+
+</style>
+
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>纯css制作各种图形</h1>
+                    
+                    <span class="meta">
+                         作者 dadaa
+                         <span>
+                          日期 2016-10-07
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#css" title="css">css</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            纯css制作各种图形
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+
+                <h1 id="用css实现各种图形"><a href="#用css实现各种图形" class="headerlink" title="用css实现各种图形"></a>用css实现各种图形</h1><h2 id="正方形"><a href="#正方形" class="headerlink" title="正方形"></a>正方形</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#square &#123;</span></div><div class="line">    width: 100px;</div><div class="line">    height: 100px;</div><div class="line">    background: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Rectangle(矩形)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#rectangle &#123;</span></div><div class="line">    width: 200px;</div><div class="line">    height: 100px;</div><div class="line">    background: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Circle(圆形)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#circle &#123;</span></div><div class="line">    width: 100px;</div><div class="line">    height: 100px;</div><div class="line">    background: red;</div><div class="line">    -moz-border-radius: 50px;</div><div class="line">    -webkit-border-radius: 50px;</div><div class="line">    border-radius: 50px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 可以使用百分比值(大于50%)，但是低版本的Android不支持 */</div></pre></td></tr></table></figure>
+<p>Oval(椭圆形)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#oval &#123;</span></div><div class="line">    width: 200px;</div><div class="line">    height: 100px;</div><div class="line">    background: red;</div><div class="line">    -moz-border-radius: 100px / 50px;</div><div class="line">    -webkit-border-radius: 100px / 50px;</div><div class="line">    border-radius: 100px / 50px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 可以使用百分比值(大于50%)，但是低版本的Android不支持 */</div></pre></td></tr></table></figure>
+<p>Triangle Up(向上的三角形)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#triangle-up &#123;</span></div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-left: 50px solid transparent;</div><div class="line">    border-right: 50px solid transparent;</div><div class="line">    border-bottom: 100px solid red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Triangle Down(向下)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#triangle-down &#123;</span></div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-left: 50px solid transparent;</div><div class="line">    border-right: 50px solid transparent;</div><div class="line">    border-top: 100px solid red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Triangle Left(向左)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#triangle-left &#123;</span></div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-top: 50px solid transparent;</div><div class="line">    border-right: 100px solid red;</div><div class="line">    border-bottom: 50px solid transparent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Triangle Right(向右)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#triangle-right &#123;</span></div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-top: 50px solid transparent;</div><div class="line">    border-left: 100px solid red;</div><div class="line">    border-bottom: 50px solid transparent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Triangle Top Left(左上)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#triangle-topleft &#123;</span></div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-top: 100px solid red;</div><div class="line">    border-right: 100px solid transparent;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Triangle Top Right(右上)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#triangle-topright &#123;</span></div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-top: 100px solid red;</div><div class="line">    border-left: 100px solid transparent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Triangle Bottom Left(左下)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#triangle-bottomleft &#123;</span></div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-bottom: 100px solid red;</div><div class="line">    border-right: 100px solid transparent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Triangle Bottom Right(右下)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#triangle-bottomright &#123;</span></div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-bottom: 100px solid red;</div><div class="line">    border-left: 100px solid transparent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Curved Tail Arrow(弯尾箭头)</p>
+<p>可以通过修改 #curvedarrow 的 rotate() 值来形成不同的方向<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#curvedarrow &#123;</span></div><div class="line">  position: relative;</div><div class="line">  width: 0;</div><div class="line">  height: 0;</div><div class="line">  border-top: 9px solid transparent;</div><div class="line">  border-right: 9px solid red;</div><div class="line">  -webkit-transform: rotate(10deg);</div><div class="line">  -moz-transform: rotate(10deg);</div><div class="line">  -ms-transform: rotate(10deg);</div><div class="line">  -o-transform: rotate(10deg);</div><div class="line">&#125;</div><div class="line"><span class="comment">#curvedarrow:after &#123;</span></div><div class="line">  content: <span class="string">""</span>;</div><div class="line">  position: absolute;</div><div class="line">  border: 0 solid transparent;</div><div class="line">  border-top: 3px solid red;</div><div class="line">  border-radius: 20px 0 0 0;</div><div class="line">  top: -12px;</div><div class="line">  left: -9px;</div><div class="line">  width: 12px;</div><div class="line">  height: 12px;</div><div class="line">  -webkit-transform: rotate(45deg);</div><div class="line">  -moz-transform: rotate(45deg);</div><div class="line">  -ms-transform: rotate(45deg);</div><div class="line">  -o-transform: rotate(45deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Trapezoid(梯形)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#trapezoid &#123;</span></div><div class="line">    border-bottom: 100px solid red;</div><div class="line">    border-left: 50px solid transparent;</div><div class="line">    border-right: 50px solid transparent;</div><div class="line">    height: 0;</div><div class="line">    width: 100px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Parallelogram(平行四边形)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#parallelogram &#123;</span></div><div class="line">    width: 150px;</div><div class="line">    height: 100px;</div><div class="line">    -webkit-transform: skew(20deg);</div><div class="line">       -moz-transform: skew(20deg);</div><div class="line">         -o-transform: skew(20deg);</div><div class="line">    background: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Star (6-points)(六角星)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#star-six &#123;</span></div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-left: 50px solid transparent;</div><div class="line">    border-right: 50px solid transparent;</div><div class="line">    border-bottom: 100px solid red;</div><div class="line">    position: relative;</div><div class="line">&#125;</div><div class="line"><span class="comment">#star-six:after &#123;</span></div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-left: 50px solid transparent;</div><div class="line">    border-right: 50px solid transparent;</div><div class="line">    border-top: 100px solid red;</div><div class="line">    position: absolute;</div><div class="line">    content: <span class="string">""</span>;</div><div class="line">    top: 30px;</div><div class="line">    left: -50px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Star (5-points)(五角星)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#star-five &#123;</span></div><div class="line">   margin: 50px 0;</div><div class="line">   position: relative;</div><div class="line">   display: block;</div><div class="line">   color: red;</div><div class="line">   width: 0px;</div><div class="line">   height: 0px;</div><div class="line">   border-right:  100px solid transparent;</div><div class="line">   border-bottom: 70px  solid red;</div><div class="line">   border-left:   100px solid transparent;</div><div class="line">   -moz-transform:    rotate(35deg);</div><div class="line">   -webkit-transform: rotate(35deg);</div><div class="line">   -ms-transform:     rotate(35deg);</div><div class="line">   -o-transform:      rotate(35deg);</div><div class="line">&#125;</div><div class="line"><span class="comment">#star-five:before &#123;</span></div><div class="line">   border-bottom: 80px solid red;</div><div class="line">   border-left: 30px solid transparent;</div><div class="line">   border-right: 30px solid transparent;</div><div class="line">   position: absolute;</div><div class="line">   height: 0;</div><div class="line">   width: 0;</div><div class="line">   top: -45px;</div><div class="line">   left: -65px;</div><div class="line">   display: block;</div><div class="line">   content: <span class="string">''</span>;</div><div class="line">   -webkit-transform: rotate(-35deg);</div><div class="line">   -moz-transform:    rotate(-35deg);</div><div class="line">   -ms-transform:     rotate(-35deg);</div><div class="line">   -o-transform:      rotate(-35deg);</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="comment">#star-five:after &#123;</span></div><div class="line">   position: absolute;</div><div class="line">   display: block;</div><div class="line">   color: red;</div><div class="line">   top: 3px;</div><div class="line">   left: -105px;</div><div class="line">   width: 0px;</div><div class="line">   height: 0px;</div><div class="line">   border-right: 100px solid transparent;</div><div class="line">   border-bottom: 70px solid red;</div><div class="line">   border-left: 100px solid transparent;</div><div class="line">   -webkit-transform: rotate(-70deg);</div><div class="line">   -moz-transform:    rotate(-70deg);</div><div class="line">   -ms-transform:     rotate(-70deg);</div><div class="line">   -o-transform:      rotate(-70deg);</div><div class="line">   content: <span class="string">''</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Pentagon(五边形)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#pentagon &#123;</span></div><div class="line">    position: relative;</div><div class="line">    width: 54px;</div><div class="line">    border-width: 50px 18px 0;</div><div class="line">    border-style: solid;</div><div class="line">    border-color: red transparent;</div><div class="line">&#125;</div><div class="line"><span class="comment">#pentagon:before &#123;</span></div><div class="line">    content: <span class="string">""</span>;</div><div class="line">    position: absolute;</div><div class="line">    height: 0;</div><div class="line">    width: 0;</div><div class="line">    top: -85px;</div><div class="line">    left: -18px;</div><div class="line">    border-width: 0 45px 35px;</div><div class="line">    border-style: solid;</div><div class="line">    border-color: transparent transparent red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Hexagon(六边形)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#hexagon &#123;</span></div><div class="line">    width: 100px;</div><div class="line">    height: 55px;</div><div class="line">    background: red;</div><div class="line">    position: relative;</div><div class="line">&#125;</div><div class="line"><span class="comment">#hexagon:before &#123;</span></div><div class="line">    content: <span class="string">""</span>;</div><div class="line">    position: absolute;</div><div class="line">    top: -25px;</div><div class="line">    left: 0;</div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-left: 50px solid transparent;</div><div class="line">    border-right: 50px solid transparent;</div><div class="line">    border-bottom: 25px solid red;</div><div class="line">&#125;</div><div class="line"><span class="comment">#hexagon:after &#123;</span></div><div class="line">    content: <span class="string">""</span>;</div><div class="line">    position: absolute;</div><div class="line">    bottom: -25px;</div><div class="line">    left: 0;</div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-left: 50px solid transparent;</div><div class="line">    border-right: 50px solid transparent;</div><div class="line">    border-top: 25px solid red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Octagon(八边形)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#octagon &#123;</span></div><div class="line">    width: 100px;</div><div class="line">    height: 100px;</div><div class="line">    background: red;</div><div class="line">    position: relative;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">#octagon:before &#123;</span></div><div class="line">    content: <span class="string">""</span>;</div><div class="line">    position: absolute;</div><div class="line">    top: 0;</div><div class="line">    left: 0;</div><div class="line">    border-bottom: 29px solid red;</div><div class="line">    border-left: 29px solid <span class="comment">#fff;</span></div><div class="line">    border-right: 29px solid <span class="comment">#fff;</span></div><div class="line">    width: 42px;</div><div class="line">    height: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">#octagon:after &#123;</span></div><div class="line">    content: <span class="string">""</span>;</div><div class="line">    position: absolute;</div><div class="line">    bottom: 0;</div><div class="line">    left: 0;</div><div class="line">    border-top: 29px solid red;</div><div class="line">    border-left: 29px solid <span class="comment">#fff;</span></div><div class="line">    border-right: 29px solid <span class="comment">#fff;</span></div><div class="line">    width: 42px;</div><div class="line">    height: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Heart(心形)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#heart &#123;</span></div><div class="line">    position: relative;</div><div class="line">    width: 100px;</div><div class="line">    height: 90px;</div><div class="line">&#125;</div><div class="line"><span class="comment">#heart:before,</span></div><div class="line"><span class="comment">#heart:after &#123;</span></div><div class="line">    position: absolute;</div><div class="line">    content: <span class="string">""</span>;</div><div class="line">    left: 50px;</div><div class="line">    top: 0;</div><div class="line">    width: 50px;</div><div class="line">    height: 80px;</div><div class="line">    background: red;</div><div class="line">    -moz-border-radius: 50px 50px 0 0;</div><div class="line">    border-radius: 50px 50px 0 0;</div><div class="line">    -webkit-transform: rotate(-45deg);</div><div class="line">       -moz-transform: rotate(-45deg);</div><div class="line">        -ms-transform: rotate(-45deg);</div><div class="line">         -o-transform: rotate(-45deg);</div><div class="line">            transform: rotate(-45deg);</div><div class="line">    -webkit-transform-origin: 0 100%;</div><div class="line">       -moz-transform-origin: 0 100%;</div><div class="line">        -ms-transform-origin: 0 100%;</div><div class="line">         -o-transform-origin: 0 100%;</div><div class="line">            transform-origin: 0 100%;</div><div class="line">&#125;</div><div class="line"><span class="comment">#heart:after &#123;</span></div><div class="line">    left: 0;</div><div class="line">    -webkit-transform: rotate(45deg);</div><div class="line">       -moz-transform: rotate(45deg);</div><div class="line">        -ms-transform: rotate(45deg);</div><div class="line">         -o-transform: rotate(45deg);</div><div class="line">            transform: rotate(45deg);</div><div class="line">    -webkit-transform-origin: 100% 100%;</div><div class="line">       -moz-transform-origin: 100% 100%;</div><div class="line">        -ms-transform-origin: 100% 100%;</div><div class="line">         -o-transform-origin: 100% 100%;</div><div class="line">            transform-origin :100% 100%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Infinity(无限符图形)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#infinity &#123;</span></div><div class="line">    position: relative;</div><div class="line">    width: 212px;</div><div class="line">    height: 100px;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">#infinity:before,</span></div><div class="line"><span class="comment">#infinity:after &#123;</span></div><div class="line">    content: <span class="string">""</span>;</div><div class="line">    position: absolute;</div><div class="line">    top: 0;</div><div class="line">    left: 0;</div><div class="line">    width: 60px;</div><div class="line">    height: 60px;</div><div class="line">    border: 20px solid red;</div><div class="line">    -moz-border-radius: 50px 50px 0 50px;</div><div class="line">         border-radius: 50px 50px 0 50px;</div><div class="line">    -webkit-transform: rotate(-45deg);</div><div class="line">       -moz-transform: rotate(-45deg);</div><div class="line">        -ms-transform: rotate(-45deg);</div><div class="line">         -o-transform: rotate(-45deg);</div><div class="line">            transform: rotate(-45deg);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">#infinity:after &#123;</span></div><div class="line">    left: auto;</div><div class="line">    right: 0;</div><div class="line">    -moz-border-radius: 50px 50px 50px 0;</div><div class="line">         border-radius: 50px 50px 50px 0;</div><div class="line">    -webkit-transform: rotate(45deg);</div><div class="line">       -moz-transform: rotate(45deg);</div><div class="line">        -ms-transform: rotate(45deg);</div><div class="line">         -o-transform: rotate(45deg);</div><div class="line">            transform: rotate(45deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Diamond Square(菱形)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#diamond &#123;</span></div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border: 50px solid transparent;</div><div class="line">    border-bottom-color: red;</div><div class="line">    position: relative;</div><div class="line">    top: -50px;</div><div class="line">&#125;</div><div class="line"><span class="comment">#diamond:after &#123;</span></div><div class="line">    content: <span class="string">''</span>;</div><div class="line">    position: absolute;</div><div class="line">    left: -50px;</div><div class="line">    top: 50px;</div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border: 50px solid transparent;</div><div class="line">    border-top-color: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Diamond Shield</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#diamond-shield &#123;</span></div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border: 50px solid transparent;</div><div class="line">    border-bottom: 20px solid red;</div><div class="line">    position: relative;</div><div class="line">    top: -50px;</div><div class="line">&#125;</div><div class="line"><span class="comment">#diamond-shield:after &#123;</span></div><div class="line">    content: <span class="string">''</span>;</div><div class="line">    position: absolute;</div><div class="line">    left: -50px; top: 20px;</div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border: 50px solid transparent;</div><div class="line">    border-top: 70px solid red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Diamond Narrow</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#diamond-narrow &#123;</span></div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border: 50px solid transparent;</div><div class="line">    border-bottom: 70px solid red;</div><div class="line">    position: relative;</div><div class="line">    top: -50px;</div><div class="line">&#125;</div><div class="line"><span class="comment">#diamond-narrow:after &#123;</span></div><div class="line">    content: <span class="string">''</span>;</div><div class="line">    position: absolute;</div><div class="line">    left: -50px; top: 70px;</div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border: 50px solid transparent;</div><div class="line">    border-top: 70px solid red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Cut Diamond(砖石形)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#cut-diamond &#123;</span></div><div class="line">    border-style: solid;</div><div class="line">    border-color: transparent transparent red transparent;</div><div class="line">    border-width: 0 25px 25px 25px;</div><div class="line">    height: 0;</div><div class="line">    width: 50px;</div><div class="line">    position: relative;</div><div class="line">    margin: 20px 0 50px 0;</div><div class="line">&#125;</div><div class="line"><span class="comment">#cut-diamond:after &#123;</span></div><div class="line">    content: <span class="string">""</span>;</div><div class="line">    position: absolute;</div><div class="line">    top: 25px;</div><div class="line">    left: -25px;</div><div class="line">    width: 0;</div><div class="line">    height: 0;</div><div class="line">    border-style: solid;</div><div class="line">    border-color: red transparent transparent transparent;</div><div class="line">    border-width: 70px 50px 0 50px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Egg(鸡蛋)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#egg &#123;</span></div><div class="line">   display:block;</div><div class="line">   width: 126px;</div><div class="line">   height: 180px;</div><div class="line">   background-color: red;</div><div class="line">   -webkit-border-radius: 63px 63px 63px 63px / 108px 108px 72px 72px;</div><div class="line">   border-radius:         50%  50%  50%  50%  / 60%   60%   40%  40%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Pac-Man(吃豆人)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#pacman &#123;</span></div><div class="line">  width: 0px;</div><div class="line">  height: 0px;</div><div class="line">  border-right: 60px solid transparent;</div><div class="line">  border-top: 60px solid red;</div><div class="line">  border-left: 60px solid red;</div><div class="line">  border-bottom: 60px solid red;</div><div class="line">  border-top-left-radius: 60px;</div><div class="line">  border-top-right-radius: 60px;</div><div class="line">  border-bottom-left-radius: 60px;</div><div class="line">  border-bottom-right-radius: 60px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Talk Bubble</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#talkbubble &#123;</span></div><div class="line">   width: 120px;</div><div class="line">   height: 80px;</div><div class="line">   background: red;</div><div class="line">   position: relative;</div><div class="line">   -moz-border-radius:    10px;</div><div class="line">   -webkit-border-radius: 10px;</div><div class="line">   border-radius:         10px;</div><div class="line">&#125;</div><div class="line"><span class="comment">#talkbubble:before &#123;</span></div><div class="line">   content:<span class="string">""</span>;</div><div class="line">   position: absolute;</div><div class="line">   right: 100%;</div><div class="line">   top: 26px;</div><div class="line">   width: 0;</div><div class="line">   height: 0;</div><div class="line">   border-top: 13px solid transparent;</div><div class="line">   border-right: 26px solid red;</div><div class="line">   border-bottom: 13px solid transparent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>12 Point Burst</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#burst-12 &#123;</span></div><div class="line">    background: red;</div><div class="line">    width: 80px;</div><div class="line">    height: 80px;</div><div class="line">    position: relative;</div><div class="line">    text-align: center;</div><div class="line">&#125;</div><div class="line"><span class="comment">#burst-12:before, #burst-12:after &#123;</span></div><div class="line">    content: <span class="string">""</span>;</div><div class="line">    position: absolute;</div><div class="line">    top: 0;</div><div class="line">    left: 0;</div><div class="line">    height: 80px;</div><div class="line">    width: 80px;</div><div class="line">    background: red;</div><div class="line">&#125;</div><div class="line"><span class="comment">#burst-12:before &#123;</span></div><div class="line">    -webkit-transform: rotate(30deg);</div><div class="line">       -moz-transform: rotate(30deg);</div><div class="line">        -ms-transform: rotate(30deg);</div><div class="line">         -o-transform: rotate(30deg);</div><div class="line">&#125;</div><div class="line"><span class="comment">#burst-12:after &#123;</span></div><div class="line">    -webkit-transform: rotate(60deg);</div><div class="line">       -moz-transform: rotate(60deg);</div><div class="line">        -ms-transform: rotate(60deg);</div><div class="line">         -o-transform: rotate(60deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>8 Point Burst</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#burst-8 &#123;</span></div><div class="line">    background: red;</div><div class="line">    width: 80px;</div><div class="line">    height: 80px;</div><div class="line">    position: relative;</div><div class="line">    text-align: center;</div><div class="line">    -webkit-transform: rotate(20deg);</div><div class="line">       -moz-transform: rotate(20deg);</div><div class="line">        -ms-transform: rotate(20deg);</div><div class="line">         -o-transform: rotate(20eg);</div><div class="line">&#125;</div><div class="line"><span class="comment">#burst-8:before &#123;</span></div><div class="line">    content: <span class="string">""</span>;</div><div class="line">    position: absolute;</div><div class="line">    top: 0;</div><div class="line">    left: 0;</div><div class="line">    height: 80px;</div><div class="line">    width: 80px;</div><div class="line">    background: red;</div><div class="line">    -webkit-transform: rotate(135deg);</div><div class="line">       -moz-transform: rotate(135deg);</div><div class="line">        -ms-transform: rotate(135deg);</div><div class="line">         -o-transform: rotate(135deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Yin Yang(阴阳图)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#yin-yang &#123;</span></div><div class="line">    width: 96px;</div><div class="line">    height: 48px;</div><div class="line">    background: <span class="comment">#eee;</span></div><div class="line">    border-color: red;</div><div class="line">    border-style: solid;</div><div class="line">    border-width: 2px 2px 50px 2px;</div><div class="line">    border-radius: 100%;</div><div class="line">    position: relative;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">#yin-yang:before &#123;</span></div><div class="line">    content: <span class="string">""</span>;</div><div class="line">    position: absolute;</div><div class="line">    top: 50%;</div><div class="line">    left: 0;</div><div class="line">    background: <span class="comment">#eee;</span></div><div class="line">    border: 18px solid red;</div><div class="line">    border-radius: 100%;</div><div class="line">    width: 12px;</div><div class="line">    height: 12px;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">#yin-yang:after &#123;</span></div><div class="line">    content: <span class="string">""</span>;</div><div class="line">    position: absolute;</div><div class="line">    top: 50%;</div><div class="line">    left: 50%;</div><div class="line">    background: red;</div><div class="line">    border: 18px solid <span class="comment">#eee;</span></div><div class="line">    border-radius:100%;</div><div class="line">    width: 12px;</div><div class="line">    height: 12px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Badge Ribbon(徽章丝带)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#badge-ribbon &#123;</span></div><div class="line"> position: relative;</div><div class="line"> background: red;</div><div class="line"> height: 100px;</div><div class="line"> width: 100px;</div><div class="line"> -moz-border-radius:    50px;</div><div class="line"> -webkit-border-radius: 50px;</div><div class="line"> border-radius:         50px;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">#badge-ribbon:before,</span></div><div class="line"><span class="comment">#badge-ribbon:after &#123;</span></div><div class="line">  content: <span class="string">''</span>;</div><div class="line">  position: absolute;</div><div class="line">  border-bottom: 70px solid red;</div><div class="line">  border-left: 40px solid transparent;</div><div class="line">  border-right: 40px solid transparent;</div><div class="line">  top: 70px;</div><div class="line">  left: -10px;</div><div class="line">  -webkit-transform: rotate(-140deg);</div><div class="line">  -moz-transform:    rotate(-140deg);</div><div class="line">  -ms-transform:     rotate(-140deg);</div><div class="line">  -o-transform:      rotate(-140deg);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">#badge-ribbon:after &#123;</span></div><div class="line">  left: auto;</div><div class="line">  right: -10px;</div><div class="line">  -webkit-transform: rotate(140deg);</div><div class="line">  -moz-transform:    rotate(140deg);</div><div class="line">  -ms-transform:     rotate(140deg);</div><div class="line">  -o-transform:      rotate(140deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Space Invader</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#space-invader&#123;</span></div><div class="line">  box-shadow:</div><div class="line">    0 0 0 1em red,</div><div class="line">    0 1em 0 1em red,</div><div class="line">    -2.5em 1.5em 0 .5em red,</div><div class="line">    2.5em 1.5em 0 .5em red,</div><div class="line">    -3em -3em 0 0 red,</div><div class="line">    3em -3em 0 0 red,</div><div class="line">    -2em -2em 0 0 red,</div><div class="line">    2em -2em 0 0 red,</div><div class="line">    -3em -1em 0 0 red,</div><div class="line">    -2em -1em 0 0 red,</div><div class="line">    2em -1em 0 0 red,</div><div class="line">    3em -1em 0 0 red,</div><div class="line">    -4em 0 0 0 red,</div><div class="line">    -3em 0 0 0 red,</div><div class="line">    3em 0 0 0 red,</div><div class="line">    4em 0 0 0 red,</div><div class="line">    -5em 1em 0 0 red,</div><div class="line">    -4em 1em 0 0 red,</div><div class="line">    4em 1em 0 0 red,</div><div class="line">    5em 1em 0 0 red,</div><div class="line">    -5em 2em 0 0 red,</div><div class="line">    5em 2em 0 0 red,</div><div class="line">    -5em 3em 0 0 red,</div><div class="line">    -3em 3em 0 0 red,</div><div class="line">    3em 3em 0 0 red,</div><div class="line">    5em 3em 0 0 red,</div><div class="line">    -2em 4em 0 0 red,</div><div class="line">    -1em 4em 0 0 red,</div><div class="line">    1em 4em 0 0 red,</div><div class="line">    2em 4em 0 0 red;</div><div class="line"></div><div class="line">    background: red;</div><div class="line">    width: 1em;</div><div class="line">    height: 1em;</div><div class="line">    overflow: hidden;</div><div class="line"></div><div class="line">    margin: 50px 0 70px 65px;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>TV Screen</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#tv &#123;</span></div><div class="line">  position: relative;</div><div class="line">  width: 200px;</div><div class="line">  height: 150px;</div><div class="line">  margin: 20px 0;</div><div class="line">  background: red;</div><div class="line">  border-radius: 50% / 10%;</div><div class="line">  color: white;</div><div class="line">  text-align: center;</div><div class="line">  text-indent: .1em;</div><div class="line">&#125;</div><div class="line"><span class="comment">#tv:before &#123;</span></div><div class="line">  content: <span class="string">''</span>;</div><div class="line">  position: absolute;</div><div class="line">  top: 10%;</div><div class="line">  bottom: 10%;</div><div class="line">  right: -5%;</div><div class="line">  left: -5%;</div><div class="line">  background: inherit;</div><div class="line">  border-radius: 5% / 50%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Chevron</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#chevron &#123;</span></div><div class="line">  position: relative;</div><div class="line">  text-align: center;</div><div class="line">  padding: 12px;</div><div class="line">  margin-bottom: 6px;</div><div class="line">  height: 60px;</div><div class="line">  width: 200px;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">#chevron:before &#123;</span></div><div class="line">  content: <span class="string">''</span>;</div><div class="line">  position: absolute;</div><div class="line">  top: 0;</div><div class="line">  left: 0;</div><div class="line">  height: 100%;</div><div class="line">  width: 51%;</div><div class="line">  background: red;</div><div class="line">  -webkit-transform: skew(0deg, 6deg);</div><div class="line">  -moz-transform: skew(0deg, 6deg);</div><div class="line">  -ms-transform: skew(0deg, 6deg);</div><div class="line">  -o-transform: skew(0deg, 6deg);</div><div class="line">  transform: skew(0deg, 6deg);</div><div class="line">&#125;</div><div class="line"><span class="comment">#chevron:after &#123;</span></div><div class="line">  content: <span class="string">''</span>;</div><div class="line">  position: absolute;</div><div class="line">  top: 0;</div><div class="line">  right: 0;</div><div class="line">  height: 100%;</div><div class="line">  width: 50%;</div><div class="line">  background: red;</div><div class="line">  -webkit-transform: skew(0deg, -6deg);</div><div class="line">  -moz-transform: skew(0deg, -6deg);</div><div class="line">  -ms-transform: skew(0deg, -6deg);</div><div class="line">  -o-transform: skew(0deg, -6deg);</div><div class="line">  transform: skew(0deg, -6deg);</div><div class="line">&#125;​</div></pre></td></tr></table></figure>
+<p>Magnifying Glass</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#magnifying-glass&#123;</span></div><div class="line"> font-size: 10em; /* This controls the size. */</div><div class="line"> display: inline-block;</div><div class="line"> width: 0.4em;</div><div class="line"> height: 0.4em;</div><div class="line"> border: 0.1em solid red;</div><div class="line"> position: relative;</div><div class="line"> border-radius: 0.35em;</div><div class="line">&#125;</div><div class="line"><span class="comment">#magnifying-glass::before&#123;</span></div><div class="line"> content: <span class="string">""</span>;</div><div class="line"> display: inline-block;</div><div class="line"> position: absolute;</div><div class="line"> right: -0.25em;</div><div class="line"> bottom: -0.1em;</div><div class="line"> border-width: 0;</div><div class="line"> background: red;</div><div class="line"> width: 0.35em;</div><div class="line"> height: 0.08em;</div><div class="line"> -webkit-transform: rotate(45deg);</div><div class="line">    -moz-transform: rotate(45deg);</div><div class="line">     -ms-transform: rotate(45deg);</div><div class="line">      -o-transform: rotate(45deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Facebook Icon</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#facebook-icon &#123;</span></div><div class="line">  background: red;</div><div class="line">  text-indent: -999em;</div><div class="line">  width: 100px;</div><div class="line">  height: 110px;</div><div class="line">  border-radius: 5px;</div><div class="line">  position: relative;</div><div class="line">  overflow: hidden;</div><div class="line">  border: 15px solid red;</div><div class="line">  border-bottom: 0;</div><div class="line">&#125;</div><div class="line"><span class="comment">#facebook-icon::before &#123;</span></div><div class="line">  content: <span class="string">"/20"</span>;</div><div class="line">  position: absolute;</div><div class="line">  background: red;</div><div class="line">  width: 40px;</div><div class="line">  height: 90px;</div><div class="line">  bottom: -30px;</div><div class="line">  right: -37px;</div><div class="line">  border: 20px solid <span class="comment">#eee;</span></div><div class="line">  border-radius: 25px;</div><div class="line">&#125;</div><div class="line"><span class="comment">#facebook-icon::after &#123;</span></div><div class="line">  content: <span class="string">"/20"</span>;</div><div class="line">  position: absolute;</div><div class="line">  width: 55px;</div><div class="line">  top: 50px;</div><div class="line">  height: 20px;</div><div class="line">  background: <span class="comment">#eee;</span></div><div class="line">  right: 5px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Cone(圆锥形)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#cone &#123;</span></div><div class="line">  width: 0;</div><div class="line">  height: 0;</div><div class="line">  border-left: 70px solid transparent;</div><div class="line">  border-right: 70px solid transparent;</div><div class="line">  border-top: 100px solid red;</div><div class="line">  -moz-border-radius: 50%;</div><div class="line">  -webkit-border-radius: 50%;</div><div class="line">  border-radius: 50%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Moon(月亮)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#moon &#123;</span></div><div class="line">  width: 80px;</div><div class="line">  height: 80px;</div><div class="line">  border-radius: 50%;</div><div class="line">  box-shadow: 15px 15px 0 0 red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Flag</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#flag &#123;</span></div><div class="line">  width: 110px;</div><div class="line">  height: 56px;</div><div class="line">  padding-top: 15px;</div><div class="line">  position: relative;</div><div class="line">  background: red;</div><div class="line">  color: white;</div><div class="line">  font-size: 11px;</div><div class="line">  letter-spacing: 0.2em;</div><div class="line">  text-align: center;</div><div class="line">  text-transform: uppercase;</div><div class="line">&#125;</div><div class="line"><span class="comment">#flag:after &#123;</span></div><div class="line">  content: <span class="string">""</span>;</div><div class="line">  position: absolute;</div><div class="line">  left: 0;</div><div class="line">  bottom: 0;</div><div class="line">  width: 0;</div><div class="line">  height: 0;</div><div class="line">  border-bottom: 13px solid <span class="comment">#fff;</span></div><div class="line">  border-left: 55px solid transparent;</div><div class="line">  border-right: 55px solid transparent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Cross</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#cross &#123;</span></div><div class="line">  background: red;</div><div class="line">  height: 100px;</div><div class="line">  position: relative;</div><div class="line">  width: 20px;</div><div class="line">&#125;</div><div class="line"><span class="comment">#cross:after &#123;</span></div><div class="line">  background: red;</div><div class="line">  content: <span class="string">""</span>;</div><div class="line">  height: 20px;</div><div class="line">  left: -40px;</div><div class="line">  position: absolute;</div><div class="line">  top: 40px;</div><div class="line">  width: 100px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Base</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#base &#123;</span></div><div class="line">  background: red;</div><div class="line">  display: inline-block;</div><div class="line">  height: 55px;</div><div class="line">  margin-left: 20px;</div><div class="line">  margin-top: 55px;</div><div class="line">    position: relative;</div><div class="line">    width: 100px;</div><div class="line">&#125;</div><div class="line"><span class="comment">#base:before &#123;</span></div><div class="line">  border-bottom: 35px solid red;</div><div class="line">  border-left: 50px solid transparent;</div><div class="line">  border-right: 50px solid transparent;</div><div class="line">  content: <span class="string">""</span>;</div><div class="line">  height: 0;</div><div class="line">  left: 0;</div><div class="line">  position: absolute;</div><div class="line">  top: -35px;</div><div class="line">  width: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>大家可以看<a href="http://saeedalipoor.github.io/icono/" target="_blank" rel="external">这个网站</a>,这上面有很多用一个元素完成的图片！css乐趣多多！</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/10/15/request中文文档/" data-toggle="tooltip" data-placement="top" title="request中文文档">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/09/11/javascript-类型判断/" data-toggle="tooltip" data-placement="top" title="javascript 类型判断">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="2016/10/07/纯css制作各种图形/"
+                        data-title="纯css制作各种图形"
+                        data-url="http://yoursite.com/2016/10/07/纯css制作各种图形/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col" >
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#用css实现各种图形"><span class="toc-text">用css实现各种图形</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#正方形"><span class="toc-text">正方形</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'dashan123';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <span class="text-muted"style="font-size: 14px">双击导航条返回顶部</span>
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/daa-da">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/5263776212/profile?topnav=1&amp;wvr=6&amp;is_all=1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/dadaa1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 落花成殇 2016
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','undefined','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <!--wechat title img-->
+    <img class="wechat-title-img" src="http://i1.buimg.com/567571/ab86b19deb1eeb47.jpg">
+</body>
+
+</html>

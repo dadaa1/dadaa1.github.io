@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="undefined">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#60090">
+    <link rel="shortcut icon" href="/img/coffee.png">
+
+    <title>
+        
+          request中文文档｜落花成殇
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2016/10/15/request中文文档/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://p2.image.hiapk.com/uploads/allimg/121025/23-121025145201.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span class="brand-logo">
+                    落花成殇
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                        
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+                        
+                    
+                        
+                        <li>
+                            <a href="/about/">about</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!--only post-->
+
+    
+        <img class="wechat-title-img" src="http://7xolmp.com1.z0.glb.clouddn.comhttp://p2.image.hiapk.com/uploads/allimg/121025/23-121025145201.jpg">
+    
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://7xolmp.com1.z0.glb.clouddn.comhttp://p2.image.hiapk.com/uploads/allimg/121025/23-121025145201.jpgundefined')
+    }
+
+</style>
+
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>request中文文档</h1>
+                    
+                    <span class="meta">
+                         作者 dadaa
+                         <span>
+                          日期 2016-10-15
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#node" title="node">node</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            request中文文档
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+
+                <h3 id="今天看node-js的request模块时，发现没有其中文文档，遂想翻译一个，一边日后查阅不再经受那英语之苦！"><a href="#今天看node-js的request模块时，发现没有其中文文档，遂想翻译一个，一边日后查阅不再经受那英语之苦！" class="headerlink" title="今天看node.js的request模块时，发现没有其中文文档，遂想翻译一个，一边日后查阅不再经受那英语之苦！"></a>今天看node.js的request模块时，发现没有其中文文档，遂想翻译一个，一边日后查阅不再经受那英语之苦！</h3><h1 id="request"><a href="#request" class="headerlink" title="request"></a>request</h1><h3 id="request-是一个流行的nodejs第三方模块，专注于处理服务端-客户端的http请求。"><a href="#request-是一个流行的nodejs第三方模块，专注于处理服务端-客户端的http请求。" class="headerlink" title="request 是一个流行的nodejs第三方模块，专注于处理服务端/客户端的http请求。"></a>request 是一个流行的nodejs第三方模块，专注于处理服务端/客户端的http请求。</h3><h2 id="非常简单易用"><a href="#非常简单易用" class="headerlink" title="非常简单易用"></a>非常简单易用</h2><h4 id="请求被设计为使HTTP调用可能最简单的方法。它支持HTTPS，默认情况下遵循重定向。"><a href="#请求被设计为使HTTP调用可能最简单的方法。它支持HTTPS，默认情况下遵循重定向。" class="headerlink" title="请求被设计为使HTTP调用可能最简单的方法。它支持HTTPS，默认情况下遵循重定向。"></a>请求被设计为使HTTP调用可能最简单的方法。它支持HTTPS，默认情况下遵循重定向。</h4><h3 id="来看一个简单的例子"><a href="#来看一个简单的例子" class="headerlink" title="来看一个简单的例子"></a>来看一个简单的例子</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var request = require(<span class="string">'request'</span>);</div><div class="line">request(<span class="string">'http://www.google.com'</span>, <span class="keyword">function</span> (error, response, body) &#123;</div><div class="line">  <span class="keyword">if</span> (!error &amp;&amp; response.statusCode == 200) &#123;</div><div class="line">    console.log(body) // Show the HTML <span class="keyword">for</span> the Google homepage. </div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h2 id="流"><a href="#流" class="headerlink" title="流"></a>流</h2><h4 id="任何响应都可以输出到文件流。"><a href="#任何响应都可以输出到文件流。" class="headerlink" title="任何响应都可以输出到文件流。"></a>任何响应都可以输出到文件流。</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request(<span class="string">'http://google.com/doodle.png'</span>).pipe(fs.createWriteStream(<span class="string">'doodle.png'</span>))</div></pre></td></tr></table></figure>
+<h4 id="反过来，也可以将文件传给PUT或POST请求。未提供header的情况下，会检测文件后缀名，在PUT请求中设置相应的content-type。"><a href="#反过来，也可以将文件传给PUT或POST请求。未提供header的情况下，会检测文件后缀名，在PUT请求中设置相应的content-type。" class="headerlink" title="反过来，也可以将文件传给PUT或POST请求。未提供header的情况下，会检测文件后缀名，在PUT请求中设置相应的content-type。"></a>反过来，也可以将文件传给PUT或POST请求。未提供header的情况下，会检测文件后缀名，在PUT请求中设置相应的content-type。</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fs.createReadStream(<span class="string">'file.json'</span>).pipe(request.put(<span class="string">'http://mysite.com/obj.json'</span>))</div></pre></td></tr></table></figure>
+<h4 id="请求也可以pipe给自己。这种情况下会保留原content-type和content-length。"><a href="#请求也可以pipe给自己。这种情况下会保留原content-type和content-length。" class="headerlink" title="请求也可以pipe给自己。这种情况下会保留原content-type和content-length。"></a>请求也可以pipe给自己。这种情况下会保留原content-type和content-length。</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request.get(<span class="string">'http://google.com/img.png'</span>).pipe(request.put(<span class="string">'http://mysite.com/img.png'</span>))</div></pre></td></tr></table></figure>
+<h4 id="请求发出收到响应当一个“响应”事件。该response参数将是实例http-IncomingMessage。"><a href="#请求发出收到响应当一个“响应”事件。该response参数将是实例http-IncomingMessage。" class="headerlink" title="请求发出收到响应当一个“响应”事件。该response参数将是实例http.IncomingMessage。"></a>请求发出收到响应当一个“响应”事件。该response参数将是实例<a href="https://nodejs.org/api/http.html#http_class_http_incomingmessage" target="_blank" rel="external">http.IncomingMessage</a>。</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">  .get(<span class="string">'http://google.com/img.png'</span>)</div><div class="line">  .on(<span class="string">'response'</span>, <span class="keyword">function</span>(response) &#123;</div><div class="line">    console.log(response.statusCode) // 200 </div><div class="line">    console.log(response.headers[<span class="string">'content-type'</span>]) // <span class="string">'image/png'</span> </div><div class="line">  &#125;)</div><div class="line">  .pipe(request.put(<span class="string">'http://mysite.com/img.png'</span>))</div></pre></td></tr></table></figure>
+<h4 id="当发起一个请求前，可以监听error事件"><a href="#当发起一个请求前，可以监听error事件" class="headerlink" title="当发起一个请求前，可以监听error事件"></a>当发起一个请求前，可以监听error事件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">  .get(<span class="string">'http://mysite.com/doodle.png'</span>)</div><div class="line">  .on(<span class="string">'error'</span>, <span class="keyword">function</span>(err) &#123;</div><div class="line">    console.log(err)</div><div class="line">  &#125;)</div><div class="line">  .pipe(fs.createWriteStream(<span class="string">'doodle.png'</span>))</div></pre></td></tr></table></figure>
+<h4 id="现在让我们做得更好"><a href="#现在让我们做得更好" class="headerlink" title="现在让我们做得更好"></a>现在让我们做得更好</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">http.createServer(<span class="keyword">function</span> (req, resp) &#123;</div><div class="line">  <span class="keyword">if</span> (req.url === <span class="string">'/doodle.png'</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (req.method === <span class="string">'PUT'</span>) &#123;</div><div class="line">      req.pipe(request.put(<span class="string">'http://mysite.com/doodle.png'</span>))</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (req.method === <span class="string">'GET'</span> || req.method === <span class="string">'HEAD'</span>) &#123;</div><div class="line">      request.get(<span class="string">'http://mysite.com/doodle.png'</span>).pipe(resp)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="你也可以pipe-从http-ServerRequest-实例-以及http-ServerResponse的实例。这个http的-method-headers以及请求内容将被发送。这意味着，如果你不真的关心安全，你可以做的："><a href="#你也可以pipe-从http-ServerRequest-实例-以及http-ServerResponse的实例。这个http的-method-headers以及请求内容将被发送。这意味着，如果你不真的关心安全，你可以做的：" class="headerlink" title="你也可以pipe()从http.ServerRequest()实例,以及http.ServerResponse的实例。这个http的 method, headers以及请求内容将被发送。这意味着，如果你不真的关心安全，你可以做的："></a>你也可以pipe()从http.ServerRequest()实例,以及http.ServerResponse的实例。这个http的 method, headers以及请求内容将被发送。这意味着，如果你不真的关心安全，你可以做的：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">http.createServer(<span class="keyword">function</span> (req, resp) &#123;</div><div class="line">  <span class="keyword">if</span> (req.url === <span class="string">'/doodle.png'</span>) &#123;</div><div class="line">    var x = request(<span class="string">'http://mysite.com/doodle.png'</span>)</div><div class="line">    req.pipe(x)</div><div class="line">    x.pipe(resp)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h1 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h1>
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/10/18/string的拓展/" data-toggle="tooltip" data-placement="top" title="string的拓展">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/10/07/纯css制作各种图形/" data-toggle="tooltip" data-placement="top" title="纯css制作各种图形">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="2016/10/15/request中文文档/"
+                        data-title="request中文文档"
+                        data-url="http://yoursite.com/2016/10/15/request中文文档/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col" >
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#今天看node-js的request模块时，发现没有其中文文档，遂想翻译一个，一边日后查阅不再经受那英语之苦！"><span class="toc-text">今天看node.js的request模块时，发现没有其中文文档，遂想翻译一个，一边日后查阅不再经受那英语之苦！</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#request"><span class="toc-text">request</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#request-是一个流行的nodejs第三方模块，专注于处理服务端-客户端的http请求。"><span class="toc-text">request 是一个流行的nodejs第三方模块，专注于处理服务端/客户端的http请求。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非常简单易用"><span class="toc-text">非常简单易用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#请求被设计为使HTTP调用可能最简单的方法。它支持HTTPS，默认情况下遵循重定向。"><span class="toc-text">请求被设计为使HTTP调用可能最简单的方法。它支持HTTPS，默认情况下遵循重定向。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#来看一个简单的例子"><span class="toc-text">来看一个简单的例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流"><span class="toc-text">流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#任何响应都可以输出到文件流。"><span class="toc-text">任何响应都可以输出到文件流。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反过来，也可以将文件传给PUT或POST请求。未提供header的情况下，会检测文件后缀名，在PUT请求中设置相应的content-type。"><span class="toc-text">反过来，也可以将文件传给PUT或POST请求。未提供header的情况下，会检测文件后缀名，在PUT请求中设置相应的content-type。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#请求也可以pipe给自己。这种情况下会保留原content-type和content-length。"><span class="toc-text">请求也可以pipe给自己。这种情况下会保留原content-type和content-length。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#请求发出收到响应当一个“响应”事件。该response参数将是实例http-IncomingMessage。"><span class="toc-text">请求发出收到响应当一个“响应”事件。该response参数将是实例http.IncomingMessage。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#当发起一个请求前，可以监听error事件"><span class="toc-text">当发起一个请求前，可以监听error事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#现在让我们做得更好"><span class="toc-text">现在让我们做得更好</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#你也可以pipe-从http-ServerRequest-实例-以及http-ServerResponse的实例。这个http的-method-headers以及请求内容将被发送。这意味着，如果你不真的关心安全，你可以做的："><span class="toc-text">你也可以pipe()从http.ServerRequest()实例,以及http.ServerResponse的实例。这个http的 method, headers以及请求内容将被发送。这意味着，如果你不真的关心安全，你可以做的：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#未完待续"><span class="toc-text">未完待续</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'dashan123';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <span class="text-muted"style="font-size: 14px">双击导航条返回顶部</span>
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/daa-da">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/5263776212/profile?topnav=1&amp;wvr=6&amp;is_all=1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/dadaa1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 落花成殇 2016
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','undefined','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <!--wechat title img-->
+    <img class="wechat-title-img" src="http://i1.buimg.com/567571/ab86b19deb1eeb47.jpg">
+</body>
+
+</html>

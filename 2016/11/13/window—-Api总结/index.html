@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="undefined">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#60090">
+    <link rel="shortcut icon" href="/img/coffee.png">
+
+    <title>
+        
+          window—-Api总结｜落花成殇
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2016/11/13/window—-Api总结/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://p2.image.hiapk.com/uploads/allimg/121025/23-121025145201.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span class="brand-logo">
+                    落花成殇
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                        
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+                        
+                    
+                        
+                        <li>
+                            <a href="/about/">about</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!--only post-->
+
+    
+        <img class="wechat-title-img" src="post-default.jpg">
+    
+
+<style>
+
+    header.intro-header{
+        background-image: url('post-default.jpg')
+    }
+
+</style>
+
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>window—-Api总结</h1>
+                    
+                    <span class="meta">
+                         作者 dadaa
+                         <span>
+                          日期 2016-11-13
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#window" title="window">window</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            window—-Api总结
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+
+                <h2 id="window中的dom中的接口总结"><a href="#window中的dom中的接口总结" class="headerlink" title="window中的dom中的接口总结"></a>window中的dom中的接口总结</h2><h3 id="节点属性"><a href="#节点属性" class="headerlink" title="节点属性"></a>节点属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">Node.nodeName   //返回节点名称，只读</div><div class="line">Node.nodeType   //返回节点类型的常数值，只读</div><div class="line">Node.nodeValue  //返回Text或Comment节点的文本值，只读</div><div class="line">Node.textContent  //返回当前节点和它的所有后代节点的文本内容，可读写</div><div class="line">Node.baseURI    //返回当前网页的绝对路径</div><div class="line"></div><div class="line">Node.ownerDocument  //返回当前节点所在的顶层文档对象，即document</div><div class="line">Node.nextSibling  //返回紧跟在当前节点后面的第一个兄弟节点</div><div class="line">Node.previousSibling  //返回当前节点前面的、距离最近的一个兄弟节点</div><div class="line">Node.parentNode   //返回当前节点的父节点</div><div class="line">Node.parentElement  //返回当前节点的父Element节点</div><div class="line">Node.childNodes   //返回当前节点的所有子节点</div><div class="line">Node.firstChild  //返回当前节点的第一个子节点</div><div class="line">Node.lastChild   //返回当前节点的最后一个子节点</div><div class="line"></div><div class="line">//parentNode接口</div><div class="line">Node.children  //返回指定节点的所有Element子节点</div><div class="line">Node.firstElementChild  //返回当前节点的第一个Element子节点</div><div class="line">Node.lastElementChild   //返回当前节点的最后一个Element子节点</div><div class="line">Node.childElementCount  //返回当前节点所有Element子节点的数目。</div></pre></td></tr></table></figure>
+<h3 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Node.appendChild(node)   //向节点添加最后一个子节点</div><div class="line">Node.hasChildNodes()   //返回布尔值，表示当前节点是否有子节点</div><div class="line">Node.cloneNode(<span class="literal">true</span>);  // 默认为<span class="literal">false</span>(克隆节点), <span class="literal">true</span>(克隆节点及其属性，以及后代)</div><div class="line">Node.insertBefore(newNode,oldNode)  // 在指定子节点之前插入新的子节点</div><div class="line">Node.removeChild(node)   //删除节点，在要删除节点的父节点上操作</div><div class="line">Node.replaceChild(newChild,oldChild)  //替换节点</div><div class="line">Node.contains(node)  //返回一个布尔值，表示参数节点是否为当前节点的后代节点。</div><div class="line">Node.compareDocumentPosition(node)   //返回一个7个比特位的二进制值，表示参数节点和当前节点的关系</div><div class="line">Node.isEqualNode(noe)  //返回布尔值，用于检查两个节点是否相等。所谓相等的节点，指的是两个节点的类型相同、属性相同、子节点相同。</div><div class="line">Node.normalize()   //用于清理当前节点内部的所有Text节点。它会去除空的文本节点，并且将毗邻的文本节点合并成一个。</div><div class="line"></div><div class="line">//ChildNode接口</div><div class="line">Node.remove()  //用于删除当前节点</div><div class="line">Node.before()  //</div><div class="line">Node.after()</div><div class="line">Node.replaceWith()</div></pre></td></tr></table></figure>
+<h3 id="document上的属性"><a href="#document上的属性" class="headerlink" title="document上的属性"></a>document上的属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">document.doctype   //</div><div class="line">document.documentElement  //返回当前文档的根节点</div><div class="line">document.defaultView   //返回document对象所在的window对象</div><div class="line">document.body   //返回当前文档的&lt;body&gt;节点</div><div class="line">document.head   //返回当前文档的&lt;head&gt;节点</div><div class="line">document.activeElement  //返回当前文档中获得焦点的那个元素。</div><div class="line"></div><div class="line">//节点集合属性</div><div class="line">document.links  //返回当前文档的所有a元素</div><div class="line">document.forms  //返回页面中所有表单元素</div><div class="line">document.images  //返回页面中所有图片元素</div><div class="line">document.embeds  //返回网页中所有嵌入对象</div><div class="line">document.scripts  //返回当前文档的所有脚本</div><div class="line">document.styleSheets  //返回当前网页的所有样式表</div><div class="line"></div><div class="line">//文档信息属性</div><div class="line">document.documentURI  //表示当前文档的网址</div><div class="line">document.URL  //返回当前文档的网址</div><div class="line">document.domain  //返回当前文档的域名</div><div class="line">document.lastModified  //返回当前文档最后修改的时间戳</div><div class="line">document.location  //返回location对象，提供当前文档的URL信息</div><div class="line">document.referrer  //返回当前文档的访问来源</div><div class="line">document.title    //返回当前文档的标题</div><div class="line">document.characterSet属性返回渲染当前文档的字符集，比如UTF-8、ISO-8859-1。</div><div class="line">document.readyState  //返回当前文档的状态</div><div class="line">document.designMode  //控制当前文档是否可编辑，可读写</div><div class="line">document.compatMode  //返回浏览器处理文档的模式</div><div class="line">document.cookie   //用来操作Cookie</div></pre></td></tr></table></figure>
+<h3 id="document节点上的方法"><a href="#document节点上的方法" class="headerlink" title="document节点上的方法"></a>document节点上的方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">document.open()   //用于新建并打开一个文档</div><div class="line">document.close()   //不安比open方法所新建的文档</div><div class="line">document.write()   //用于向当前文档写入内容</div><div class="line">document.writeIn()  //用于向当前文档写入内容，尾部添加换行符。</div><div class="line">document.querySelector(selectors)   //接受一个CSS选择器作为参数，返回第一个匹配该选择器的元素节点。</div><div class="line">document.querySelectorAll(selectors)  //接受一个CSS选择器作为参数，返回所有匹配该选择器的元素节点。</div><div class="line">document.getElementsByTagName(tagName)  //返回所有指定HTML标签的元素</div><div class="line">document.getElementsByClassName(className)   //返回包括了所有class名字符合指定条件的元素</div><div class="line">document.getElementsByName(name)   //用于选择拥有name属性的HTML元素（比如&lt;form&gt;、&lt;radio&gt;、&lt;img&gt;、&lt;frame&gt;、&lt;embed&gt;和&lt;object&gt;等）</div><div class="line">document.getElementById(id)   //返回匹配指定id属性的元素节点。</div><div class="line">document.elementFromPoint(x,y)  //返回位于页面指定位置最上层的Element子节点。</div><div class="line">document.createElement(tagName)   //用来生成HTML元素节点。</div><div class="line">document.createTextNode(text)   //用来生成文本节点</div><div class="line">document.createAttribute(name)  //生成一个新的属性对象节点，并返回它。</div><div class="line">document.createDocumentFragment()  //生成一个DocumentFragment对象</div><div class="line">document.createEvent(<span class="built_in">type</span>)   //生成一个事件对象，该对象能被element.dispatchEvent()方法使用</div><div class="line">document.addEventListener(<span class="built_in">type</span>,listener,capture)  //注册事件</div><div class="line">document.removeEventListener(<span class="built_in">type</span>,listener,capture)  //注销事件</div><div class="line">document.dispatchEvent(event)  //触发事件</div></pre></td></tr></table></figure>
+<h3 id="element节点属性"><a href="#element节点属性" class="headerlink" title="element节点属性"></a>element节点属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Element.attributes  //返回当前元素节点的所有属性节点</div><div class="line">Element.id  //返回指定元素的id属性，可读写</div><div class="line">Element.tagName  //返回指定元素的大写标签名</div><div class="line">Element.innerHTML   //返回该元素包含的HTML代码，可读写</div><div class="line">Element.outerHTML  //返回指定元素节点的所有HTML代码，包括它自身和包含的的所有子元素，可读写</div><div class="line">Element.className  //返回当前元素的class属性，可读写</div><div class="line">Element.classList  //返回当前元素节点的所有class集合</div><div class="line">Element.dataset   //返回元素节点中所有的data-*属性。</div><div class="line">Element.children   //包括当前元素节点的所有子元素</div><div class="line">Element.childElementCount   //返回当前元素节点包含的子HTML元素节点的个数</div><div class="line">Element.firstElementChild  //返回当前节点的第一个Element子节点  </div><div class="line">Element.lastElementChild   //返回当前节点的最后一个Element子节点  </div><div class="line">Element.nextElementSibling  //返回当前元素节点的下一个兄弟HTML元素节点</div><div class="line">Element.previousElementSibling  //返回当前元素节点的前一个兄弟HTML节点</div><div class="line">Element.offsetParent   //返回当前元素节点的最靠近的、并且CSS的position属性不等于static的父元素。</div></pre></td></tr></table></figure>
+<h3 id="element节点上的位置尺寸属性和方法"><a href="#element节点上的位置尺寸属性和方法" class="headerlink" title="element节点上的位置尺寸属性和方法"></a>element节点上的位置尺寸属性和方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">Element.clientHeight   //返回元素节点可见部分的高度</div><div class="line">Element.clientWidth   //返回元素节点可见部分的宽度</div><div class="line">Element.clientLeft   //返回元素节点左边框的宽度</div><div class="line">Element.clientTop   //返回元素节点顶部边框的宽度</div><div class="line">Element.scrollHeight  //返回元素节点的总高度</div><div class="line">Element.scrollWidth  //返回元素节点的总宽度</div><div class="line">Element.scrollLeft   //返回元素节点的水平滚动条向右滚动的像素数值,通过设置这个属性可以改变元素的滚动位置</div><div class="line">Element.scrollTop   //返回元素节点的垂直滚动向下滚动的像素数值</div><div class="line">Element.offsetHeight   //返回元素的垂直高度(包含border,padding)</div><div class="line">Element.offsetWidth    //返回元素的水平宽度(包含border,padding)</div><div class="line">Element.offsetLeft    //返回当前元素左上角相对于Element.offsetParent节点的垂直偏移</div><div class="line">Element.offsetTop   //返回水平位移</div><div class="line">Element.style  //返回元素节点的行内样式</div><div class="line"></div><div class="line">getBoundingClientRect()  </div><div class="line">// getBoundingClientRect返回一个对象，包含top,left,right,bottom,width,height // width、height 元素自身宽高</div><div class="line">// top 元素上外边界距窗口最上面的距离</div><div class="line">// right 元素右外边界距窗口最上面的距离</div><div class="line">// bottom 元素下外边界距窗口最上面的距离</div><div class="line">// left 元素左外边界距窗口最上面的距离</div><div class="line">// width 元素自身宽(包含border,padding) </div><div class="line">// height 元素自身高(包含border,padding) </div><div class="line"></div><div class="line">getClientRects()   //返回当前元素在页面上形参的所有矩形。</div><div class="line"></div><div class="line">// 元素在页面上的偏移量  </div><div class="line">var rect = el.getBoundingClientRect()  </div><div class="line"><span class="built_in">return</span> &#123;   </div><div class="line">  top: rect.top + document.body.scrollTop,   </div><div class="line">  left: rect.left + document.body.scrollLeft  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="element节点上的方法"><a href="#element节点上的方法" class="headerlink" title="element节点上的方法"></a>element节点上的方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">Element.getAttribute()：读取指定属性  </div><div class="line">Element.setAttribute()：设置指定属性  </div><div class="line">Element.hasAttribute()：返回一个布尔值，表示当前元素节点是否有指定的属性  </div><div class="line">Element.removeAttribute()：移除指定属性</div><div class="line">Element.querySelector()  </div><div class="line">Element.querySelectorAll()  </div><div class="line">Element.getElementsByTagName()  </div><div class="line">Element.getElementsByClassName()</div><div class="line">Element.addEventListener()：添加事件的回调函数  </div><div class="line">Element.removeEventListener()：移除事件监听函数  </div><div class="line">Element.dispatchEvent()：触发事件</div><div class="line"></div><div class="line">//ie8</div><div class="line">Element.attachEvent(oneventName,listener)</div><div class="line">Element.detachEvent(oneventName,listener)</div><div class="line"></div><div class="line">// event对象  </div><div class="line">var event = window.event||event;    </div><div class="line"></div><div class="line">// 事件的目标节点  </div><div class="line">var target = event.target || event.srcElement;</div><div class="line"></div><div class="line">// 事件代理  </div><div class="line">ul.addEventListener(<span class="string">'click'</span>, <span class="keyword">function</span>(event) &#123;   </div><div class="line">  <span class="keyword">if</span> (event.target.tagName.toLowerCase() === <span class="string">'li'</span>) &#123;   </div><div class="line">    console.log(event.target.innerHTML)   </div><div class="line">  &#125;  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="css操作"><a href="#css操作" class="headerlink" title="css操作"></a>css操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">//ie8以下</div><div class="line">Element.className  //获取元素节点的类名</div><div class="line">Element.className += <span class="string">' '</span> + newClassName  //新增一个类名</div><div class="line"></div><div class="line">//判断是否有某个类名</div><div class="line"><span class="keyword">function</span> hasClass(element,className)&#123;</div><div class="line">  <span class="built_in">return</span> new RegExp(className,<span class="string">'gi'</span>).test(element.className);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//移除class</div><div class="line"><span class="keyword">function</span> removeClass(element,className)&#123;</div><div class="line">  element.className = element.className.replace(new RegExp(<span class="string">'(^|\\b)'</span> + className.split(<span class="string">' '</span>).join(<span class="string">'|'</span>) + <span class="string">'(\\b|$)'</span>, <span class="string">'gi'</span>),<span class="string">''</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//ie10 </div><div class="line">element.classList.add(className)  //新增</div><div class="line">element.classList.remove(className)  //删除</div><div class="line">element.classList.contains(className)  //是否包含</div><div class="line">element.classList.toggle(className)  //toggle class</div><div class="line">element.setAttribute(<span class="string">'style'</span>,<span class="string">''</span>)</div><div class="line"></div><div class="line">element.style.backgroundColor = <span class="string">'red'</span></div><div class="line"></div><div class="line">element.style.cssText //用来读写或删除整个style属性</div><div class="line"></div><div class="line">element.style.setProperty(propertyName,value)  //设置css属性</div><div class="line">element.style.getPropertyValue(property)  //获取css属性</div><div class="line">element.style.removeProperty(property)  //删除css属性</div><div class="line">//ie8</div><div class="line">element.currentStyle[attrName]</div><div class="line">//ie9+</div><div class="line">window.getComputedStyle(el,null)[attrName] </div><div class="line">window.getComputedStyle(el,null).getPropertyValue(attrName)</div><div class="line">//伪类</div><div class="line">window.getComputedStyle(el,<span class="string">':after'</span>)[attrName]</div></pre></td></tr></table></figure>
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/11/03/nodejs的fs模块总结/" data-toggle="tooltip" data-placement="top" title="nodejs的fs模块总结">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="2016/11/13/window—-Api总结/"
+                        data-title="window—-Api总结"
+                        data-url="http://yoursite.com/2016/11/13/window—-Api总结/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col" >
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#window中的dom中的接口总结"><span class="toc-text">window中的dom中的接口总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#节点属性"><span class="toc-text">节点属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点操作"><span class="toc-text">节点操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#document上的属性"><span class="toc-text">document上的属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#document节点上的方法"><span class="toc-text">document节点上的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#element节点属性"><span class="toc-text">element节点属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#element节点上的位置尺寸属性和方法"><span class="toc-text">element节点上的位置尺寸属性和方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#element节点上的方法"><span class="toc-text">element节点上的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css操作"><span class="toc-text">css操作</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'dashan123';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <span class="text-muted"style="font-size: 14px">双击导航条返回顶部</span>
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/daa-da">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/5263776212/profile?topnav=1&amp;wvr=6&amp;is_all=1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/dadaa1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 落花成殇 2016
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','undefined','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <!--wechat title img-->
+    <img class="wechat-title-img" src="http://i1.buimg.com/567571/ab86b19deb1eeb47.jpg">
+</body>
+
+</html>
