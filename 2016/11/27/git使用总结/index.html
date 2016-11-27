@@ -16,11 +16,11 @@
 
     <title>
         
-          Buffer学习笔记｜落花成殇
+          git使用总结｜落花成殇
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2016/11/22/Buffer学习笔记/">
+    <link rel="canonical" href="http://yoursite.com/2016/11/27/git使用总结/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -162,12 +162,12 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>Buffer学习笔记</h1>
+                    <h1>git使用总结</h1>
                     
                     <span class="meta">
                          作者 dadaa
                          <span>
-                          日期 2016-11-22
+                          日期 2016-11-27
                          </span>
                     </span>
                     <div class="tags text-center">
@@ -179,7 +179,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            Buffer学习笔记
+            git使用总结
         </span>
     </div>
 </header>
@@ -191,7 +191,31 @@
                 <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
 
-                <p>Buffer是全局类，访问时不需要require</p>
+                <h2 id="Git是什么？"><a href="#Git是什么？" class="headerlink" title="Git是什么？"></a>Git是什么？</h2><h3 id="Git是一个分布式版本控制工具，非常好用，最重要的的是它是开源-免费的，可以高效敏捷的管理大小项目。"><a href="#Git是一个分布式版本控制工具，非常好用，最重要的的是它是开源-免费的，可以高效敏捷的管理大小项目。" class="headerlink" title="Git是一个分布式版本控制工具，非常好用，最重要的的是它是开源 免费的，可以高效敏捷的管理大小项目。"></a>Git是一个分布式版本控制工具，非常好用，最重要的的是它是开源 免费的，可以高效敏捷的管理大小项目。</h3><h2 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h2><h3 id="linux上的安装"><a href="#linux上的安装" class="headerlink" title="linux上的安装"></a>linux上的安装</h3><p>ubuntu上的安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git</div></pre></td></tr></table></figure></p>
+<p>执行这一条指令即可安装完成</p>
+<h3 id="windows上的安装"><a href="#windows上的安装" class="headerlink" title="windows上的安装"></a>windows上的安装</h3><p>从<a href="https://git-scm.com/downloads" target="_blank" rel="external">官网</a>上下载下来安装包，next,next即可</p>
+<h3 id="安装完成后，你可以配置你的名字和邮箱"><a href="#安装完成后，你可以配置你的名字和邮箱" class="headerlink" title="安装完成后，你可以配置你的名字和邮箱"></a>安装完成后，你可以配置你的名字和邮箱</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.name <span class="string">"你的名字"</span></div><div class="line">git config --global user.email <span class="string">"你的邮箱"</span></div></pre></td></tr></table></figure>
+<h2 id="Git的使用"><a href="#Git的使用" class="headerlink" title="Git的使用"></a>Git的使用</h2><h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir newRepository //创建一个文件，文件名为newRepository</div><div class="line"><span class="built_in">cd</span> newRepository //进入此文件夹</div><div class="line">git init //创建仓库</div></pre></td></tr></table></figure>
+<p>执行完以上操作后，你就会发现文件夹里多了一个.git目录（此目录默认隐藏，看不见也正常），这个目录是Git来跟踪管理版本库的。</p>
+<h3 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add <span class="string">"文件名1"</span> <span class="string">"文件名2"</span> <span class="string">"文件名3"</span></div><div class="line">git commit -m <span class="string">"说明"</span></div></pre></td></tr></table></figure>
+<p>git commit 命令执行完成后，会告诉你哪里改变了。</p>
+<p>使用git status命令，要随时掌握工作区的状态。</p>
+<p>使用git diff可以查看修改内容。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">$ git diff</div><div class="line">diff --git a/one.txt b/one.txt</div><div class="line">index 0a58394..703982b 100644</div><div class="line">--- a/one.txt</div><div class="line">--- a/one.txt</div><div class="line">+++ b/one.txt</div><div class="line">@@ -2,4 +2,6 @@ Git is a version control system.</div><div class="line"> Git is free software.</div><div class="line"></div><div class="line"></div><div class="line">-111111</div><div class="line">\ No newline at end of file</div><div class="line">+111111</div><div class="line">+</div><div class="line">+22222</div><div class="line">\ No newline at end of file</div><div class="line">(END)</div></pre></td></tr></table></figure></p>
+<p>使用git log命令可以显示从最近到最远的提交日志</p>
+<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git reset --hard HEAD^</div><div class="line">git reset --hard commit_id</div></pre></td></tr></table></figure>
+<p>在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。<br>要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</p>
+<h3 id="从远程库clone"><a href="#从远程库clone" class="headerlink" title="从远程库clone"></a>从远程库clone</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/dadaa1/zhihu-api.git</div></pre></td></tr></table></figure>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>查看分支：git branch</p>
+<p>创建分支：git branch <name></name></p>
+<p>切换分支：git checkout <name></name></p>
+<p>创建+切换分支：git checkout -b <name></name></p>
+<p>合并某分支到当前分支：git merge <name></name></p>
+<p>删除分支：git branch -d <name></name></p>
+<h2 id="远程git仓库"><a href="#远程git仓库" class="headerlink" title="远程git仓库"></a>远程git仓库</h2><p>1.<a href="https://github.com" target="_blank" rel="external">Github</a></p>
+<p>2.<a href="https://coding.net" target="_blank" rel="external">Coding</a>(国内的)</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>以上就是git使用方法喽~</p>
+<h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p>1.<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的git教程</a></p>
+<p>2.<a href="https://git-scm.com/" target="_blank" rel="external">Git官网</a></p>
 
 
                 <hr>
@@ -200,13 +224,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2016/11/27/git使用总结/" data-toggle="tooltip" data-placement="top" title="git使用总结">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2016/11/13/window—-Api总结/" data-toggle="tooltip" data-placement="top" title="window—-Api总结">Next Post &rarr;</a>
+                            <a href="/2016/11/22/Buffer学习笔记/" data-toggle="tooltip" data-placement="top" title="Buffer学习笔记">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -215,9 +235,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="2016/11/22/Buffer学习笔记/"
-                        data-title="Buffer学习笔记"
-                        data-url="http://yoursite.com/2016/11/22/Buffer学习笔记/" >
+                        data-thread-key="2016/11/27/git使用总结/"
+                        data-title="git使用总结"
+                        data-url="http://yoursite.com/2016/11/27/git使用总结/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -229,7 +249,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col" >
                 <div class="toc-wrap">
-                    
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git是什么？"><span class="toc-text">Git是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Git是一个分布式版本控制工具，非常好用，最重要的的是它是开源-免费的，可以高效敏捷的管理大小项目。"><span class="toc-text">Git是一个分布式版本控制工具，非常好用，最重要的的是它是开源 免费的，可以高效敏捷的管理大小项目。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git的安装"><span class="toc-text">Git的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux上的安装"><span class="toc-text">linux上的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#windows上的安装"><span class="toc-text">windows上的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装完成后，你可以配置你的名字和邮箱"><span class="toc-text">安装完成后，你可以配置你的名字和邮箱</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git的使用"><span class="toc-text">Git的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建版本库"><span class="toc-text">创建版本库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加文件"><span class="toc-text">添加文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#版本回退"><span class="toc-text">版本回退</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从远程库clone"><span class="toc-text">从远程库clone</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支"><span class="toc-text">分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程git仓库"><span class="toc-text">远程git仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结："><span class="toc-text">总结：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料："><span class="toc-text">参考资料：</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
