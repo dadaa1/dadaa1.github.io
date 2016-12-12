@@ -16,11 +16,11 @@
 
     <title>
         
-          string的拓展｜落花成殇
+          canvas学习笔记｜落花成殇
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2016/10/18/string的拓展/">
+    <link rel="canonical" href="http://yoursite.com/2016/12/02/canvas学习笔记/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -162,15 +162,17 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>string的拓展</h1>
+                    <h1>canvas学习笔记</h1>
                     
                     <span class="meta">
                          作者 dadaa
                          <span>
-                          日期 2016-10-18
+                          日期 2016-12-02
                          </span>
                     </span>
                     <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#node" title="node">node</a>
                         
                     </div>
                 </div>
@@ -179,7 +181,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            string的拓展
+            canvas学习笔记
         </span>
     </div>
 </header>
@@ -191,8 +193,37 @@
                 <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
 
-                <h2 id="复制的，抽空再看！"><a href="#复制的，抽空再看！" class="headerlink" title="复制的，抽空再看！~"></a>复制的，抽空再看！~</h2><p>方法都是在String的原型上拓展的~ </p>
-<p>##<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line">//获取字符数组</div><div class="line">String.prototype.toCharArray = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.split(<span class="string">""</span>);</div><div class="line">&#125;</div><div class="line">//获取N个相同的字符串 </div><div class="line">String.prototype.repeat = <span class="keyword">function</span>(num) &#123;</div><div class="line">    var tmpArr = [];</div><div class="line">    <span class="keyword">for</span> ( var i = 0; i &lt; num; i++)</div><div class="line">        tmpArr.push(this);</div><div class="line">    <span class="built_in">return</span> tmpArr.join(<span class="string">""</span>);</div><div class="line">&#125;</div><div class="line">//逆序 </div><div class="line">String.prototype.reverse = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>);</div><div class="line">&#125;</div><div class="line">//测试是否是数字 </div><div class="line">String.prototype.isNumeric = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var tmpFloat = parseFloat(this);</div><div class="line">    <span class="keyword">if</span> (isNaN(tmpFloat))</div><div class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">    var tmpLen = this.length - tmpFloat.toString().length;</div><div class="line">    <span class="built_in">return</span> tmpFloat + <span class="string">"0"</span>.Repeat(tmpLen) == this;</div><div class="line">&#125;</div><div class="line">//测试是否是整数 </div><div class="line">String.prototype.isInt = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="keyword">if</span> (this == <span class="string">"NaN"</span>)</div><div class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="built_in">return</span> this == parseInt(this).toString();</div><div class="line">&#125;</div><div class="line">// 合并多个空白为一个空白 </div><div class="line">String.prototype.resetBlank = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.replace(/s+/g, <span class="string">" "</span>);</div><div class="line">&#125;</div><div class="line">// 除去左边空白 </div><div class="line">String.prototype.LTrim = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.replace(/^s+/g, <span class="string">""</span>);</div><div class="line">&#125;</div><div class="line">// 除去右边空白 </div><div class="line">String.prototype.RTrim = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.replace(/s+$/g, <span class="string">""</span>);</div><div class="line">&#125;</div><div class="line">// 除去两边空白 </div><div class="line">String.prototype.trim = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.replace(/(^s+)|(s+$)/g, <span class="string">""</span>);</div><div class="line">&#125;</div><div class="line">// 保留数字 </div><div class="line">String.prototype.getNum = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.replace(/[^d]/g, <span class="string">""</span>);</div><div class="line">&#125;</div><div class="line">// 保留字母 </div><div class="line">String.prototype.getEn = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.replace(/[^A-Za-z]/g, <span class="string">""</span>);</div><div class="line">&#125;</div><div class="line">// 保留中文 </div><div class="line">String.prototype.getCn = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.replace(/[^u4e00-u9fa5uf900-ufa2d]/g, <span class="string">""</span>);</div><div class="line">&#125;</div><div class="line">// 得到字节长度 </div><div class="line">String.prototype.getRealLength = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> this.replace(/[^x00-xff]/g, <span class="string">"--"</span>).length;</div><div class="line">&#125;</div><div class="line">// 从左截取指定长度的字串 </div><div class="line">String.prototype.left = <span class="keyword">function</span>(n) &#123;</div><div class="line">    <span class="built_in">return</span> this.slice(0, n);</div><div class="line">&#125;</div><div class="line">// 从右截取指定长度的字串 </div><div class="line">String.prototype.right = <span class="keyword">function</span>(n) &#123;</div><div class="line">    <span class="built_in">return</span> this.slice(this.length - n);</div><div class="line">&#125;</div><div class="line">// HTML编码 </div><div class="line">String.prototype.HTMLEncode = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var re = this;</div><div class="line">    var q1 = [ /x26/g, /x3C/g, /x3E/g, /x20/g ];</div><div class="line">    var q2 = [ <span class="string">"&amp;"</span>, <span class="string">"&lt;"</span>, <span class="string">"&gt;"</span>, <span class="string">" "</span> ];</div><div class="line">    <span class="keyword">for</span> ( var i = 0; i &lt; q1.length; i++)</div><div class="line">        re = re.replace(q1[i], q2[i]);</div><div class="line">    <span class="built_in">return</span> re;</div><div class="line">&#125;</div><div class="line">// Unicode转化 </div><div class="line">String.prototype.ascW = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var strText = <span class="string">""</span>;</div><div class="line">    <span class="keyword">for</span> ( var i = 0; i &lt; this.length; i++)</div><div class="line">        strText += <span class="string">"&amp;#"</span> + this.charCodeAt(i) + <span class="string">";"</span>;</div><div class="line">    <span class="built_in">return</span> strText;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+                <p>在进行canvas做图前，需要做些准备工作</p>
+<p>1.获取canvas对象</p>
+<p>2.获取画布</p>
+<p>3.获取画笔</p>
+<p>代码实现：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;canvas id=<span class="string">"canvas"</span>&gt;&lt;/canvas&gt;</div><div class="line">var canvas=document.getElementById(<span class="string">'canvas'</span>);</div><div class="line">var ctx=canvas.getContext(<span class="string">'2d'</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="画线段"><a href="#画线段" class="headerlink" title="画线段"></a>画线段</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">200</span>);</div></pre></td></tr></table></figure>
+<p>此时并不能出现图像，这是为什么呢？因为canvas是一个基于状态的绘制，所以想要出现图像必须先给画笔一个样式。常见的样式有：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ctx.lineWidth=5;//画笔的粗细</div><div class="line">ctx.lineCap=[butt,round,square];//默认，半圆，半宽矩形</div><div class="line">ctx.lineJoin=[miter,bevel,round];</div><div class="line">ctx.strokeStyle=<span class="string">"red"</span>;//画笔的颜色，支持css3的颜色表示</div><div class="line">ctx.fillStyle=<span class="string">"red"</span>;//闭合图像的填充的颜色</div><div class="line">ctx.fillStyle=<span class="string">"red"</span>;</div><div class="line">（未完待续）</div></pre></td></tr></table></figure></p>
+<h3 id="多状态"><a href="#多状态" class="headerlink" title="多状态"></a>多状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath();</div><div class="line">ctx.closePath();</div><div class="line">ctx.save();</div><div class="line">ctx.restore();</div></pre></td></tr></table></figure>
+<p>将不同的状态用以上代码包裹起来就能维持多个状态的绘制了，从而不是最后的一个状态。</p>
+<h2 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ctx.stroke();</div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
+<h3 id="绘制矩形"><a href="#绘制矩形" class="headerlink" title="绘制矩形"></a>绘制矩形</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ctx.rect(x,y,height,width);//起始坐标，宽高</div><div class="line">//可以直接绘制的矩形</div><div class="line">ctx.strokeRect(x,y,height,width);//起始坐标，宽高</div></pre></td></tr></table></figure>
+<h3 id="填充的矩形"><a href="#填充的矩形" class="headerlink" title="填充的矩形"></a>填充的矩形</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.fillRect(x,y,height,width);//起始坐标，宽高</div></pre></td></tr></table></figure>
+<h3 id="绘制圆弧"><a href="#绘制圆弧" class="headerlink" title="绘制圆弧"></a>绘制圆弧</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.arc(x,y,r,s,e,c);//圆心的坐标，半径，起始角，结束角，顺时针or逆时针</div></pre></td></tr></table></figure>
+<p>需要注意的是必须用moveTo()将画笔移动到圆周上，否则将出现你不想看到的比画。</p>
+<h3 id="创建介于两个切线之间的弧-曲线"><a href="#创建介于两个切线之间的弧-曲线" class="headerlink" title="创建介于两个切线之间的弧/曲线"></a>创建介于两个切线之间的弧/曲线</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.arcTo(x1,y1,x2,y2,r);</div></pre></td></tr></table></figure>
+<p>有点难懂，来个图</p>
+<p><img src="arcto.png" alt="arcto.png"></p>
+<h3 id="二次贝塞尔曲线"><a href="#二次贝塞尔曲线" class="headerlink" title="二次贝塞尔曲线"></a>二次贝塞尔曲线</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.quadraticCurveTo(cpx,cpy,x,y);//控制点坐标，终点坐标</div></pre></td></tr></table></figure>
+<h3 id="三次贝塞尔曲线"><a href="#三次贝塞尔曲线" class="headerlink" title="三次贝塞尔曲线"></a>三次贝塞尔曲线</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x,y);//控制点坐标1，控制点坐标1，终点坐标</div></pre></td></tr></table></figure>
+<h3 id="平移变换"><a href="#平移变换" class="headerlink" title="平移变换"></a>平移变换</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.translate(x,y);//平移的坐标</div></pre></td></tr></table></figure>
+<p>在平移完成后，建议还原成原有的坐标系，否则会坐标混乱。</p>
+<h3 id="旋转变换"><a href="#旋转变换" class="headerlink" title="旋转变换"></a>旋转变换</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.route(angle);//以坐标原点为圆心旋转</div></pre></td></tr></table></figure>
+<p>旋转的圆心是原点，可以通过translate()来改变原点。</p>
+<h3 id="缩放变换"><a href="#缩放变换" class="headerlink" title="缩放变换"></a>缩放变换</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.scale(sx,sy);//分别是水平方向和垂直方向上对象的缩放倍数</div></pre></td></tr></table></figure>
+<h3 id="矩阵变换"><a href="#矩阵变换" class="headerlink" title="矩阵变换"></a>矩阵变换</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.transform();</div></pre></td></tr></table></figure>
+<p>用法跟css的transform的用法基本相同~</p>
+<p>比较麻烦，较为难用~  </p>
+<h2 id="文本api"><a href="#文本api" class="headerlink" title="文本api"></a>文本api</h2><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ctx.font// 设置或返回文本内容的当前字体属性。和css的font的一样;</div><div class="line">ctx.textAlign=[start,end,center,left,right]// 设置或返回文本内容的当前对齐方式。默认start</div><div class="line">ctx.textBaseline //设置或返回在绘制文本时使用的当前文本基线</div></pre></td></tr></table></figure>
+<p>textBaseline的图片说明</p>
+<p><img src="font.png" alt="font"></p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">fillText(text,x,y,maxWidth);//</div><div class="line">strokeText(text,x,y,maxWidth);//</div></pre></td></tr></table></figure>
 
 
                 <hr>
@@ -201,13 +232,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2016/11/03/nodejs的fs模块总结/" data-toggle="tooltip" data-placement="top" title="nodejs的fs模块总结">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2016/10/15/request中文文档/" data-toggle="tooltip" data-placement="top" title="request中文文档">Next Post &rarr;</a>
+                            <a href="/2016/11/27/git使用总结/" data-toggle="tooltip" data-placement="top" title="git使用总结">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -216,9 +243,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="2016/10/18/string的拓展/"
-                        data-title="string的拓展"
-                        data-url="http://yoursite.com/2016/10/18/string的拓展/" >
+                        data-thread-key="2016/12/02/canvas学习笔记/"
+                        data-title="canvas学习笔记"
+                        data-url="http://yoursite.com/2016/12/02/canvas学习笔记/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -230,7 +257,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col" >
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#复制的，抽空再看！"><span class="toc-text">复制的，抽空再看！~</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#画线段"><span class="toc-text">画线段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多状态"><span class="toc-text">多状态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绘制"><span class="toc-text">绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#绘制矩形"><span class="toc-text">绘制矩形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#填充的矩形"><span class="toc-text">填充的矩形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绘制圆弧"><span class="toc-text">绘制圆弧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建介于两个切线之间的弧-曲线"><span class="toc-text">创建介于两个切线之间的弧/曲线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二次贝塞尔曲线"><span class="toc-text">二次贝塞尔曲线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三次贝塞尔曲线"><span class="toc-text">三次贝塞尔曲线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#平移变换"><span class="toc-text">平移变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#旋转变换"><span class="toc-text">旋转变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缩放变换"><span class="toc-text">缩放变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵变换"><span class="toc-text">矩阵变换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文本api"><span class="toc-text">文本api</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#属性"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法"><span class="toc-text">方法</span></a></li></ol>
                 </div>
             </div>
         </div>
