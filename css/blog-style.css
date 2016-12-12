@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+width: 0;
+height:0;
+}
 @media (min-width: 1200px) {
     .post-cont-iner,
     .sidebar-container {
