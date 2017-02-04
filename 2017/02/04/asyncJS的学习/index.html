@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="undefined">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#60090">
+    <link rel="shortcut icon" href="/img/coffee.png">
+
+    <title>
+        
+          asyncJS的学习｜落花成殇
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2017/02/04/asyncJS的学习/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://ww1.sinaimg.cn/large/0060lm7Tgw1faoc4gd4j2j30fj0f1gmb.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span class="brand-logo">
+                    落花成殇
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                        
+                    
+                        
+                    
+                        
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+                        
+                    
+                        
+                        <li>
+                            <a href="/about/">about</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!--only post-->
+
+    
+        <img class="wechat-title-img" src="http://p2.image.hiapk.com/uploads/allimg/121025/23-121025145201.jpg">
+    
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://p2.image.hiapk.com/uploads/allimg/121025/23-121025145201.jpg') ;
+    }
+
+</style>
+
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>asyncJS的学习</h1>
+                    
+                    <span class="meta">
+                         作者 dadaa
+                         <span>
+                          日期 2017-02-04
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#node" title="node">node</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            asyncJS的学习
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+
+                <h2 id="官方的文档分为三个模块："><a href="#官方的文档分为三个模块：" class="headerlink" title="官方的文档分为三个模块："></a>官方的文档分为三个模块：</h2><h3 id="1-Collections-集合"><a href="#1-Collections-集合" class="headerlink" title="1.Collections  集合"></a>1.Collections  集合</h3><h3 id="2-Control-Flow-控制流程"><a href="#2-Control-Flow-控制流程" class="headerlink" title="2.Control Flow  控制流程"></a>2.Control Flow  控制流程</h3><h3 id="3-Utils-公共模块"><a href="#3-Utils-公共模块" class="headerlink" title="3.Utils  公共模块"></a>3.Utils  公共模块</h3><p>最常用的应该就是第二个模块了，async的主要功能也都集中在里面</p>
+<h2 id="Control-Flow"><a href="#Control-Flow" class="headerlink" title="Control Flow"></a>Control Flow</h2><h3 id="1-series-tasks-callback-顺序执行数组、集合内的函数，当前面一个函数执行完成就会立即执行下一个函数，如果函数触发了错误，可以在callback函数中验证，否则会一直执行完成tasks"><a href="#1-series-tasks-callback-顺序执行数组、集合内的函数，当前面一个函数执行完成就会立即执行下一个函数，如果函数触发了错误，可以在callback函数中验证，否则会一直执行完成tasks" class="headerlink" title="1.series(tasks, [callback])      顺序执行数组、集合内的函数，当前面一个函数执行完成就会立即执行下一个函数，如果函数触发了错误，可以在callback函数中验证，否则会一直执行完成tasks"></a>1.series(tasks, [callback])      顺序执行数组、集合内的函数，当前面一个函数执行完成就会立即执行下一个函数，如果函数触发了错误，可以在callback函数中验证，否则会一直执行完成tasks</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"> async.series([</div><div class="line">     <span class="keyword">function</span>(callback)&#123;</div><div class="line">        // <span class="keyword">do</span> some stuff ...</div><div class="line">        callback(null, <span class="string">'one'</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="keyword">function</span>(callback)&#123;</div><div class="line">        // <span class="keyword">do</span> some more stuff ...</div><div class="line">        callback(null, <span class="string">'two'</span>);</div><div class="line">    &#125;</div><div class="line">],</div><div class="line">// optional callback</div><div class="line"><span class="keyword">function</span>(err, results)&#123;</div><div class="line">    // results is now equal to [<span class="string">'one'</span>, <span class="string">'two'</span>]</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line">// an example using an object instead of an array</div><div class="line">async.series(&#123;</div><div class="line">    one: <span class="keyword">function</span>(callback)&#123;</div><div class="line">        <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">            callback(null, 1);</div><div class="line">        &#125;, 200);</div><div class="line">    &#125;,</div><div class="line">    two: <span class="keyword">function</span>(callback)&#123;</div><div class="line">        <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">            callback(null, 2);</div><div class="line">        &#125;, 100);</div><div class="line">    &#125;</div><div class="line">&#125;,</div><div class="line"><span class="keyword">function</span>(err, results) &#123;</div><div class="line">    // results is now equal to: &#123;one: 1, two: 2&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="2-parallel-tasks-callback-并行执行数组、集合内的方法，不用等到前一个函数执行完再执行下一个函数，如果函数触发了错误，可以在callback函数中验证"><a href="#2-parallel-tasks-callback-并行执行数组、集合内的方法，不用等到前一个函数执行完再执行下一个函数，如果函数触发了错误，可以在callback函数中验证" class="headerlink" title="2.parallel(tasks, [callback])　　并行执行数组、集合内的方法，不用等到前一个函数执行完再执行下一个函数，如果函数触发了错误，可以在callback函数中验证"></a>2.parallel(tasks, [callback])　　并行执行数组、集合内的方法，不用等到前一个函数执行完再执行下一个函数，如果函数触发了错误，可以在callback函数中验证</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"> async.parallel([</div><div class="line">     <span class="keyword">function</span>(callback)&#123;</div><div class="line">         <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">             callback(null, <span class="string">'one'</span>);</div><div class="line">         &#125;, 200);</div><div class="line">     &#125;,</div><div class="line">     <span class="keyword">function</span>(callback)&#123;</div><div class="line">         <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">             callback(null, <span class="string">'two'</span>);</div><div class="line">        &#125;, 100);</div><div class="line">    &#125;</div><div class="line">],</div><div class="line">// optional callback</div><div class="line"><span class="keyword">function</span>(err, results)&#123;</div><div class="line">    // the results array will equal [<span class="string">'one'</span>,<span class="string">'two'</span>] even though</div><div class="line">    // the second <span class="keyword">function</span> had a shorter timeout.</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line">// an example using an object instead of an array</div><div class="line">async.parallel(&#123;</div><div class="line">    one: <span class="keyword">function</span>(callback)&#123;</div><div class="line">        <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">            callback(null, 1);</div><div class="line">        &#125;, 200);</div><div class="line">    &#125;,</div><div class="line">    two: <span class="keyword">function</span>(callback)&#123;</div><div class="line">        <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">            callback(null, 2);</div><div class="line">        &#125;, 100);</div><div class="line">    &#125;</div><div class="line">&#125;,</div><div class="line"><span class="keyword">function</span>(err, results) &#123;</div><div class="line">    // results is now equals to: &#123;one: 1, two: 2&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="3-parallelLimit-tasks-limit-callback-和2用法一样，只是多了一个任务数量限制，最多允许多少个任务在并行执行"><a href="#3-parallelLimit-tasks-limit-callback-和2用法一样，只是多了一个任务数量限制，最多允许多少个任务在并行执行" class="headerlink" title="3.parallelLimit(tasks, limit, [callback])　　和2用法一样，只是多了一个任务数量限制，最多允许多少个任务在并行执行"></a>3.parallelLimit(tasks, limit, [callback])　　和2用法一样，只是多了一个任务数量限制，最多允许多少个任务在并行执行</h3><h3 id="4-whilst-test-fn-callback-等同于while的用法，第一个参数为验证条件，第二个参数为执行函数，第三个参数为验证失败后回调函数，一般在做延迟动画用的比较多"><a href="#4-whilst-test-fn-callback-等同于while的用法，第一个参数为验证条件，第二个参数为执行函数，第三个参数为验证失败后回调函数，一般在做延迟动画用的比较多" class="headerlink" title="4.whilst(test, fn, callback)　　等同于while的用法，第一个参数为验证条件，第二个参数为执行函数，第三个参数为验证失败后回调函数，一般在做延迟动画用的比较多"></a>4.whilst(test, fn, callback)　　等同于while的用法，第一个参数为验证条件，第二个参数为执行函数，第三个参数为验证失败后回调函数，一般在做延迟动画用的比较多</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var count = 0;</div><div class="line"></div><div class="line">async.whilst(</div><div class="line">    <span class="function"><span class="title">function</span></span> () &#123; <span class="built_in">return</span> count &lt; 5; &#125;,//验证成功继续，失败进回调</div><div class="line">    <span class="keyword">function</span> (callback) &#123;</div><div class="line">        count++;</div><div class="line">        <span class="built_in">set</span>Timeout(callback, 1000);</div><div class="line">    &#125;,</div><div class="line">    <span class="keyword">function</span> (err) &#123;</div><div class="line">        // 5 seconds have passed</div><div class="line">    &#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<h3 id="5-waterfall-tasks-callback-tasks依次运行-前一个函数的回调会作为后一个函数的参数，如果有任何任务通过一个错误的回调，下一个函数不执行"><a href="#5-waterfall-tasks-callback-tasks依次运行-前一个函数的回调会作为后一个函数的参数，如果有任何任务通过一个错误的回调，下一个函数不执行" class="headerlink" title="5.waterfall(tasks, [callback])　　tasks依次运行,前一个函数的回调会作为后一个函数的参数，如果有任何任务通过一个错误的回调，下一个函数不执行"></a>5.waterfall(tasks, [callback])　　tasks依次运行,前一个函数的回调会作为后一个函数的参数，如果有任何任务通过一个错误的回调，下一个函数不执行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">async.waterfall([</div><div class="line">    <span class="keyword">function</span>(callback)&#123;</div><div class="line">        callback(null, <span class="string">'one'</span>, <span class="string">'two'</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="keyword">function</span>(arg1, arg2, callback)&#123;</div><div class="line">      // arg1 now equals <span class="string">'one'</span> and arg2 now equals <span class="string">'two'</span></div><div class="line">        callback(null, <span class="string">'three'</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="keyword">function</span>(arg1, callback)&#123;</div><div class="line">        // arg1 now equals <span class="string">'three'</span></div><div class="line">        callback(null, <span class="string">'done'</span>);</div><div class="line">    &#125;</div><div class="line">], <span class="keyword">function</span> (err, result) &#123;</div><div class="line">   // result now equals <span class="string">'done'</span>    </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="6-compose-fn1-fn2…-按顺序加入到队列中，按顺序执行，将上一个函数的结果作为下一个函数的值"><a href="#6-compose-fn1-fn2…-按顺序加入到队列中，按顺序执行，将上一个函数的结果作为下一个函数的值" class="headerlink" title="6.compose(fn1, fn2…)　　按顺序加入到队列中，按顺序执行，将上一个函数的结果作为下一个函数的值"></a>6.compose(fn1, fn2…)　　按顺序加入到队列中，按顺序执行，将上一个函数的结果作为下一个函数的值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> add1(n, callback) &#123;</div><div class="line">     <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">         callback(null, n + 1);</div><div class="line">     &#125;, 10);</div><div class="line"> &#125;</div><div class="line"> </div><div class="line"> <span class="keyword">function</span> mul3(n, callback) &#123;</div><div class="line">     <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">         callback(null, n * 3);</div><div class="line">     &#125;, 10);</div><div class="line"> &#125;</div><div class="line"> </div><div class="line"> var add1mul3 = async.compose(mul3, add1);</div><div class="line"> </div><div class="line">add1mul3(4, <span class="keyword">function</span> (err, result) &#123;</div><div class="line">    // result now equals 15</div><div class="line"> &#125;);</div></pre></td></tr></table></figure>
+<h2 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h2><p>collections模块主要实现对集合的遍历，排序，过滤，查询等功能</p>
+<p><hr><br>forEach：对集合中每个元素进行异步操作<br>map：对集合中的每个元素通过异步操作得到另一个值，得到新的集合<br>filter：对集合中元素使用异步操作进行筛选，得到符合条件的集合<br>reject：与filter相似，只是判断条件时正好相反，得到剩下的元素的集合<br>reduce：使用一个初始值同集合中每一个元素进行异步操作，最后得到一个唯一的结果<br>detect：得到集合中满足条件的第一个数据<br>sortBy：对集合中的数据进行异步操作，再根据值从小到大排序<br>some/any：集合中是否有至少一个元素满足条件<br>every/all：集合中是否每个元素都满足条件<br>concat：对集合中的元素进行异步操作，将结果集合并成一个数组<br>1.each(arr, iterator, callback)　　第一个参数为数组（array），第二个参数为iterator(item, callback)，其中item为数组内元素，callback为回调，第三个参数为回调函数，用法为迭代数组内每一个元素，执行一个方法，完成时可以调用回调，当迭代器返回一个错误回调，可执行处理函数</p>
+<hr>
+
+<p>如果想对同一个集合中的所有元素都执行同一个异步操作，可以利用forEach函数。注意该函数将重点放在“执行过程”上，忽略运行后产生的数据。如果需要结果，可使用map函数。</p>
+<p>根据执行的方式不同，forEach提供了三个版本：</p>
+<p>集合中所有元素并行执行<br>一个一个顺序执行<br>分批执行，同一批内并行，批与批之间按顺序<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"> // assuming openFiles is an array of file names </div><div class="line"> </div><div class="line"> async.each(openFiles, <span class="keyword">function</span>( file, callback) &#123;</div><div class="line"> </div><div class="line">   // Perform operation on file here.</div><div class="line">   console.log(<span class="string">'Processing file '</span> + file);</div><div class="line"> </div><div class="line">   <span class="keyword">if</span>( file.length &gt; 32 ) &#123;</div><div class="line">   console.log(<span class="string">'This file name is too long'</span>);</div><div class="line">    callback(<span class="string">'File name too long'</span>);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    // Do work to process file here</div><div class="line">    console.log(<span class="string">'File processed'</span>);</div><div class="line">    callback();</div><div class="line">  &#125;</div><div class="line">&#125;, <span class="keyword">function</span>(err)&#123;</div><div class="line">    // <span class="keyword">if</span> any of the file processing produced an error, err would equal that error</div><div class="line">    <span class="keyword">if</span>( err ) &#123;</div><div class="line">      // One of the iterations produced an error.</div><div class="line">      // All processing will now stop.</div><div class="line">      console.log(<span class="string">'A file failed to process'</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      console.log(<span class="string">'All files have been processed successfully'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> var arr = [&#123;name:<span class="string">'Jack'</span>, delay: 200&#125;, </div><div class="line">            &#123;name:<span class="string">'Mike'</span>, delay: 100&#125;, </div><div class="line">            &#123;name:<span class="string">'Freewind'</span>, delay: 300&#125;];</div><div class="line">  </div><div class="line"> async.forEach(arr, <span class="keyword">function</span>(item, callback) &#123; </div><div class="line">     <span class="built_in">log</span>(’1.1 enter: ‘ + item.name); </div><div class="line">   <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span>()&#123; </div><div class="line">        <span class="built_in">log</span>(’1.1 handle: ‘ + item.name); </div><div class="line">        callback(); </div><div class="line">    &#125;, item.delay); </div><div class="line">&#125;, <span class="keyword">function</span>(err) &#123; </div><div class="line">    <span class="built_in">log</span>(’1.1 err: ‘ + err); </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">42.244&gt; 1.1 enter: Jack </div><div class="line">42.245&gt; 1.1 enter: Mike </div><div class="line">42.245&gt; 1.1 enter: Freewind </div><div class="line">42.350&gt; 1.1 handle: Mike </div><div class="line">42.445&gt; 1.1 handle: Jack </div><div class="line">42.554&gt; 1.1 handle: Freewind </div><div class="line">42.554&gt; 1.1 err: undefined</div></pre></td></tr></table></figure>
+<p>这个函数还有一个衍生函数</p>
+<p>eachLimit(arr, limit, iterator, callback)</p>
+<p>最前面的数据是当前的时间值（秒.毫秒），从中可以看到各异步操作是并行执行的。</p>
+<p>如果想同步执行，需要使用forEachSeries函数，它与forEach的用法一模一样，只是执行时是一个一个来的。这里就不给例子了。</p>
+<p>当集合中元素很多，既不想一次全部并行操作，又不想一个一个按顺序来，可以使用forEachLimit函数。它可以设定一批处理几个，每一批内并行执行，批与批之间顺序执行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">async.forEachLimit(arr, 2, <span class="keyword">function</span>(item, callback) &#123; </div><div class="line">     <span class="built_in">log</span>(’1.5 enter: ‘ + item.name); </div><div class="line">     <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span>()&#123; </div><div class="line">         <span class="built_in">log</span>(’1.5 handle: ‘ + item.name); </div><div class="line">         callback(null, item.name); </div><div class="line">     &#125;, item.delay); </div><div class="line"> &#125;, <span class="keyword">function</span>(err) &#123; </div><div class="line">     <span class="built_in">log</span>(’1.5 err: ‘ + err); </div><div class="line"> &#125;);</div></pre></td></tr></table></figure>
+<p>打印结果如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">42.247&gt; 1.5 enter: Jack </div><div class="line">42.248&gt; 1.5 enter: Mike </div><div class="line">42.351&gt; 1.5 handle: Mike </div><div class="line">42.352&gt; 1.5 enter: Freewind </div><div class="line">42.461&gt; 1.5 handle: Jack </div><div class="line">42.664&gt; 1.5 handle: Freewind </div><div class="line">42.664&gt; 1.5 err: undefined</div></pre></td></tr></table></figure>
+<h3 id="2-map-arr-iterator-callback-遍历集合产生新的结果集合"><a href="#2-map-arr-iterator-callback-遍历集合产生新的结果集合" class="headerlink" title="2.map(arr, iterator, callback)　　遍历集合产生新的结果集合"></a>2.map(arr, iterator, callback)　　遍历集合产生新的结果集合</h3><p>map的重点是转换，即把集合中的元素通过异步操作转为另一个对象，最后可以得到转换后的对象数组。它也提供了并行与顺序执行两种方式。</p>
+<p>这里给一个示例，给集合中的每个元素以异步方式增加!：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> var arr = [&#123;name:<span class="string">'Jack'</span>, delay:200&#125;, &#123;name:<span class="string">'Mike'</span>, delay: 100&#125;, &#123;name:<span class="string">'Freewind'</span>, delay:300&#125;, &#123;name:<span class="string">'Test'</span>, delay: 50&#125;];</div><div class="line"> async.map(arr, <span class="keyword">function</span>(item, callback) &#123; </div><div class="line">     <span class="built_in">log</span>(’1.1 enter: ‘ + item.name); </div><div class="line">     <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span>() &#123; </div><div class="line">         <span class="built_in">log</span>(’1.1 handle: ‘ + item.name); </div><div class="line">         callback(null, item.name+’!!!’); </div><div class="line">    &#125;, item.delay); </div><div class="line">&#125;, <span class="keyword">function</span>(err,results) &#123; </div><div class="line">    <span class="built_in">log</span>(’1.1 err: ‘, err); </div><div class="line">    <span class="built_in">log</span>(’1.1 results: ‘, results); </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">54.569&gt; 1.1 enter: Jack </div><div class="line">54.569&gt; 1.1 enter: Mike </div><div class="line">54.569&gt; 1.1 enter: Freewind </div><div class="line">54.569&gt; 1.1 enter: Test </div><div class="line">54.629&gt; 1.1 handle: Test </div><div class="line">54.679&gt; 1.1 handle: Mike </div><div class="line">54.789&gt; 1.1 handle: Jack </div><div class="line">54.879&gt; 1.1 handle: Freewind </div><div class="line">54.879&gt; 1.1 err: </div><div class="line">54.879&gt; 1.1 results: [ <span class="string">'Jack!!!'</span>, <span class="string">'Mike!!!'</span>, <span class="string">'Freewind!!!'</span>, <span class="string">'Test!!!'</span> ]</div></pre></td></tr></table></figure>
+<h3 id="3-filter-arr-iterator-item-callback-test-callback-results"><a href="#3-filter-arr-iterator-item-callback-test-callback-results" class="headerlink" title="3.filter(arr, iterator(item, callback(test)), callback(results))　　"></a>3.filter(arr, iterator(item, callback(test)), callback(results))　　</h3><p>　reject(arr, iterator(item, callback(test)), callback(results))　　数组过滤</p>
+<p>使用异步操作对集合中的元素进行筛选。需要注意的是，iterator的callback只有一个参数，只能接收true或false。</p>
+<p>对于出错，该函数没有做出任何处理，直接由nodejs抛出。所以需要注意对Error的处理。</p>
+<p>提供了并行与顺序执行两种方式。</p>
+<p>并行示例，找到所有&gt;=3的元素：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">async.filter([1,2,3,4,5], <span class="keyword">function</span>(item, callback) &#123; </div><div class="line">    <span class="built_in">log</span>(’1.1 enter: ‘ + item); </div><div class="line">    <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span>() &#123; </div><div class="line">        <span class="built_in">log</span>(’1.1 <span class="built_in">test</span>: ‘ + item); </div><div class="line">       callback(item&gt;=3); </div><div class="line">   &#125;, 200); </div><div class="line">&#125;, <span class="keyword">function</span>(results) &#123; </div><div class="line">    <span class="built_in">log</span>(’1.1 results: ‘, results); </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>打印结果如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">16.739&gt; 1.1 enter: 1 </div><div class="line">16.749&gt; 1.1 enter: 2 </div><div class="line">16.749&gt; 1.1 enter: 3 </div><div class="line">16.749&gt; 1.1 enter: 4 </div><div class="line">16.749&gt; 1.1 enter: 5 </div><div class="line">16.749&gt; 1.3 enter: 1 </div><div class="line">16.949&gt; 1.1 <span class="built_in">test</span>: 1 </div><div class="line">16.949&gt; 1.1 <span class="built_in">test</span>: 2 </div><div class="line">16.949&gt; 1.1 <span class="built_in">test</span>: 3 </div><div class="line">16.949&gt; 1.1 <span class="built_in">test</span>: 4 </div><div class="line">16.949&gt; 1.1 <span class="built_in">test</span>: 5 </div><div class="line">16.949&gt; 1.1 results: [ 3, 4, 5 ]</div></pre></td></tr></table></figure>
+<p>可见找到了满足条件的所有元素。</p>
+<p>如果需要顺序执行，可以使用filterSeries函数，它的用法与filter一样。</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/12/02/canvas学习笔记/" data-toggle="tooltip" data-placement="top" title="canvas学习笔记">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="2017/02/04/asyncJS的学习/"
+                        data-title="asyncJS的学习"
+                        data-url="http://yoursite.com/2017/02/04/asyncJS的学习/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col" >
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#官方的文档分为三个模块："><span class="toc-text">官方的文档分为三个模块：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Collections-集合"><span class="toc-text">1.Collections  集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Control-Flow-控制流程"><span class="toc-text">2.Control Flow  控制流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Utils-公共模块"><span class="toc-text">3.Utils  公共模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Control-Flow"><span class="toc-text">Control Flow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-series-tasks-callback-顺序执行数组、集合内的函数，当前面一个函数执行完成就会立即执行下一个函数，如果函数触发了错误，可以在callback函数中验证，否则会一直执行完成tasks"><span class="toc-text">1.series(tasks, [callback])      顺序执行数组、集合内的函数，当前面一个函数执行完成就会立即执行下一个函数，如果函数触发了错误，可以在callback函数中验证，否则会一直执行完成tasks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-parallel-tasks-callback-并行执行数组、集合内的方法，不用等到前一个函数执行完再执行下一个函数，如果函数触发了错误，可以在callback函数中验证"><span class="toc-text">2.parallel(tasks, [callback])　　并行执行数组、集合内的方法，不用等到前一个函数执行完再执行下一个函数，如果函数触发了错误，可以在callback函数中验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-parallelLimit-tasks-limit-callback-和2用法一样，只是多了一个任务数量限制，最多允许多少个任务在并行执行"><span class="toc-text">3.parallelLimit(tasks, limit, [callback])　　和2用法一样，只是多了一个任务数量限制，最多允许多少个任务在并行执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-whilst-test-fn-callback-等同于while的用法，第一个参数为验证条件，第二个参数为执行函数，第三个参数为验证失败后回调函数，一般在做延迟动画用的比较多"><span class="toc-text">4.whilst(test, fn, callback)　　等同于while的用法，第一个参数为验证条件，第二个参数为执行函数，第三个参数为验证失败后回调函数，一般在做延迟动画用的比较多</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-waterfall-tasks-callback-tasks依次运行-前一个函数的回调会作为后一个函数的参数，如果有任何任务通过一个错误的回调，下一个函数不执行"><span class="toc-text">5.waterfall(tasks, [callback])　　tasks依次运行,前一个函数的回调会作为后一个函数的参数，如果有任何任务通过一个错误的回调，下一个函数不执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-compose-fn1-fn2…-按顺序加入到队列中，按顺序执行，将上一个函数的结果作为下一个函数的值"><span class="toc-text">6.compose(fn1, fn2…)　　按顺序加入到队列中，按顺序执行，将上一个函数的结果作为下一个函数的值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Collections"><span class="toc-text">Collections</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-map-arr-iterator-callback-遍历集合产生新的结果集合"><span class="toc-text">2.map(arr, iterator, callback)　　遍历集合产生新的结果集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-filter-arr-iterator-item-callback-test-callback-results"><span class="toc-text">3.filter(arr, iterator(item, callback(test)), callback(results))　　</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'dashan123';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <span class="text-muted"style="font-size: 14px">双击导航条返回顶部</span>
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/daa-da">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/5263776212/profile?topnav=1&amp;wvr=6&amp;is_all=1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/dadaa1">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 落花成殇 2017
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','undefined','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <!--wechat title img-->
+    <img class="wechat-title-img" src="http://ww1.sinaimg.cn/large/0060lm7Tgw1faoc4gd4j2j30fj0f1gmb.jpg">
+</body>
+
+</html>
